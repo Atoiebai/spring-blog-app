@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Method</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div>
+    <p class="lead mb-0 font-italic font-weight-bold">Here is some information about this User</p>
+    <br>
+   <p class="lead mb-0 font-italic  font-weight-bold" th:text="'Users id: '+ ${user.getId()}"></p>
+    <br>
+   <p class="lead mb-0 font-italic  font-weight-bold" th:text="'Name: ' + ${user.getFirstName()} + ' '+ ${user.getLastName()}"></p>
+    <br>
+   <p class="lead mb-0 font-italic  font-weight-bold" th:text="'Blog themes: '"></p>
+    <br>
+        <p class="lead mb=0 font-italic font-weight-bold" th:text="'Total posts: '"></p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All posts</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <table>
+        <tr>
+            <td class="lead mb-0 font-italic  font-weight-bold">Posts id  </td>
+            <td class="lead mb-0 font-italic  font-weight-bold">&nbsp; Posts title </td>
+        </tr>
+
+        <tr th:each="post : ${posts}">
+            <td>
+                <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/post/'+${post.getPostId()}" th:text="${post.getPostId()}"></a>
+            </td>
+
+            <td>
+                <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/post/'+${post.getPostId()}" th:text="'&nbsp;' + ${post.getTitle()}"></a>
+            </td>
+        </tr>
+    </table>
+</div>
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

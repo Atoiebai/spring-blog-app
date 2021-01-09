@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form class="" th:method="POST" th:action="@{/register}" th:object="${newUser}">
+    <h2 class="">Login</h2>
+    <p>
+        <label for="email">Your email</label>
+        <br>
+        <input type="email" th:field="*{email}" id="email" name="email" placeholder="email address" class="form-control">
+        <div style="color:darkred" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Email error</div>
+
+    <p>
+        <label for="name">First name</label>
+        <br>
+        <input type="text" th:field="*{firstName}" id="name" name="name" placeholder="Your first name..." class="form-control">
+       <div style="color:darkred" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">FirstName error</div>
+
+    <p>
+        <label for="surname">Last name</label>
+        <br>
+        <input type="text" th:field="*{lastName}" id="surname" name="surname" placeholder="Your last name..." class="form-control">
+    <div style="color:darkred" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName error</div>
+
+    <p>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" th:field="*{password}" id="password" name="password" placeholder="Password" class="form-control">
+    </p>
+    <p>
+        <label for="passwordAgain">Repeat password</label>
+        <br>
+        <input type="password" id="passwordAgain" name="passwordAgain" placeholder="Make sure you remember it" class="form-control">
+    </p>
+    <button class="btn btn-lg btn-primary btn-block">Register now</button>
+</form>
+</body>
+</html>
