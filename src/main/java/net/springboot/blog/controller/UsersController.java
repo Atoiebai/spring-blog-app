@@ -2,7 +2,6 @@ package net.springboot.blog.controller;
 
 import net.springboot.blog.model.user.BlogUser;
 import net.springboot.blog.service.BlogUsersService;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -37,8 +36,7 @@ public class UsersController {
     @GetMapping(URLS.personalPage)
     @PreAuthorize("hasAuthority('can:write')")
     public String getPersonalPage(Model model) {
-        String usersToken = SecurityContextHolder.getContext().getAuthentication().getName();
-        BlogUser user = usersService.getUser(usersService.getAuthorizedUserId(usersToken));
+        BlogUser user = (BlogUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("currentUser", user);
         return "views/personal-page";
     }

@@ -1,6 +1,7 @@
 package net.springboot.blog.service;
 
-import net.springboot.blog.dao.BlogUserFindIdRowMapper;
+//import net.springboot.blog.dao.BlogUserFindIdRowMapper;
+
 import net.springboot.blog.model.user.BlogUser;
 import net.springboot.blog.model.user.Role;
 import net.springboot.blog.model.user.Status;
@@ -45,13 +46,6 @@ public class BlogUsersServiceImpl implements BlogUsersService {
     @Override
     public void deleteUser(long id) {
         this.blogUsersRepository.deleteById(id);
-    }
-
-    @Override
-    public Long getAuthorizedUserId(String identifier) {
-        return jdbcTemplate.query("SELECT id FROM users WHERE email=?",
-                new Object[]{identifier}, new BlogUserFindIdRowMapper())
-                .stream().findFirst().orElseThrow(null);
     }
 
 }

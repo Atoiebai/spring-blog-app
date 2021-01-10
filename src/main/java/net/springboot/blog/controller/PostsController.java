@@ -1,6 +1,7 @@
 package net.springboot.blog.controller;
 
 import net.springboot.blog.model.post.Post;
+import net.springboot.blog.model.user.BlogUser;
 import net.springboot.blog.service.BlogUsersService;
 import net.springboot.blog.service.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,12 +36,9 @@ public class PostsController {
 
     @PostMapping(URLS.createPost)
     public String addPost(@ModelAttribute("newPost") Post post) {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-
-        Long userId = blogUsersService.getAuthorizedUserId(username);
-
-        if (userId != null) {
-            post.setBlogUser(blogUsersService.getUser(userId));
+        BlogUser user = (BlogUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (user != null) {
+            post.setBlogUser(user);
         } else throw new NullPointerException("User is null sorry");
 
         postService.savePost(post);

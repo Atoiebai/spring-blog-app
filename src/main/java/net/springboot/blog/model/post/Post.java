@@ -32,7 +32,7 @@ public class Post {
     @Column(name = "category", nullable = false)
     Category category;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "user_id", nullable = false)
     BlogUser blogUser;

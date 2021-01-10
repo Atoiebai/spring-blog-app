@@ -14,5 +14,4 @@ public interface BlogUsersService {
 
     void deleteUser(long id);
 
-    Long getAuthorizedUserId(String identifier);
 }

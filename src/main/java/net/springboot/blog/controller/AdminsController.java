@@ -34,11 +34,10 @@ public class AdminsController {
     @GetMapping()
     @PreAuthorize("hasAuthority('can:manage:users')")
     public String getSecretPage(Model model) {
+        //TODO: secret page with functions which available only for admins
         model.addAttribute("users", usersService.getAllUsers());
         model.addAttribute("posts", postService.getAllPosts());
-        //TODO: secret page with functions which available only for admins
         return "views/hidden-page";
     }
-
 
 }
