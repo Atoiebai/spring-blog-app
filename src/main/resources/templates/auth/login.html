@@ -1,26 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-<div class="container">
-   <form class="form-signin-heading" method="post" action="/login">
-       <h2 class="form-signin-heading">Login or <a href="/register">Sign up</a></h2>
-       <p>
-           <label for="username">Username</label>
-           <input type="text" id="username" name="username" placeholder="Username" class="form-control">
-       </p>
 
-       <p>
-           <label for="password">Password</label>
-           <input type="password" id="password" name="password" placeholder="Password" class="form-control">
-</p>
-<button class="btn btn-lg btn-primary btn-block">Sign in</button>
-</form>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h4 class="masthead-brand">Cover</h4>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="#">Home
+                </a>
+                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+        <main role="main" class="inner cover">
+            <div class="container" style="width: 30%">
+                <form class="form-signin-heading" method="post" action="/login">
+                    <h3 class="form-signin-heading">Login or <a href="/register">Sign up</a></h3>
+                    <p>
+                        <label for="username"></label>
+                        <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+                    </p>
+
+                    <p>
+                        <label for="password"></label>
+                        <input type="password" id="password" name="password" placeholder="Password"
+                               class="form-control">
+                    </p>
+                    <button class="btn btn-lg btn-primary btn-block">Sign in</button>
+                </form>
+            </div>
+        </main>
+    </div>
 </div>
+<footer class="mastfoot mt-auto">
+    <div class="inner">
+        <p>Project blog created by <a href="https://github.com/Atoiebai">Atoiebai</a>.</p>
+    </div>
+</footer>
 </body>
-</html>
 
+</html>
 

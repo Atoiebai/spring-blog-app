@@ -15,7 +15,7 @@ public class SpringConfig implements WebMvcConfigurer {
     String user; //username for database connection
 
     @Value("${spring.datasource.password}")
-    String password ; //password for database connection
+    String password; //password for database connection
 
     @Value("${spring.datasource.url}")
     String urlDb; //url for database connection
@@ -37,6 +37,6 @@ public class SpringConfig implements WebMvcConfigurer {
 
     @Bean
     protected JdbcTemplate jdbcTemplate(DataSource dataSource) {
-        return  new JdbcTemplate(dataSource);
+        return new JdbcTemplate(dataSource);
     }
 }

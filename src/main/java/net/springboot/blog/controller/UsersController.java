@@ -2,6 +2,9 @@ package net.springboot.blog.controller;
 
 import net.springboot.blog.model.user.BlogUser;
 import net.springboot.blog.service.BlogUsersService;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,23 +22,32 @@ import javax.persistence.EntityNotFoundException;
 @RequestMapping(URLS.usersPage)
 public class UsersController {
 
-    private final BlogUsersService blogUsersService;
+    private final BlogUsersService usersService;
 
-    public UsersController(BlogUsersService blogUsersService) {
-        this.blogUsersService = blogUsersService;
+    public UsersController(BlogUsersService usersService) {
+        this.usersService = usersService;
     }
 
     @GetMapping()
     public String getAllUsers(Model model) {
-        model.addAttribute("users", blogUsersService.getAllUsers());
+        model.addAttribute("users", usersService.getAllUsers());
         return "views/get-users";
     }
 
-    @GetMapping( "/{id}")
+    @GetMapping(URLS.personalPage)
+    @PreAuthorize("hasAuthority('can:write')")
+    public String getPersonalPage(Model model) {
+        String usersToken = SecurityContextHolder.getContext().getAuthentication().getName();
+        BlogUser user = usersService.getUser(usersService.getAuthorizedUserId(usersToken));
+        model.addAttribute("currentUser", user);
+        return "views/personal-page";
+    }
+
+    @GetMapping("/{id}")
     public String getUser(Model model,
                           @PathVariable(value = "id") long id) {
         try {
-            BlogUser blogUser = blogUsersService.getUser(id);
+            BlogUser blogUser = usersService.getUser(id);
             model.addAttribute("user", blogUser);
         } catch (EntityNotFoundException e) {
             model.addAttribute("message", "No user with such id. Try to use another one");

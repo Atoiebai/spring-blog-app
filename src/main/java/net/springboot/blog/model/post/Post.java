@@ -11,7 +11,7 @@ import org.hibernate.annotations.NotFoundAction;
 import javax.persistence.*;
 
 @Entity
-@Table(name="posts")
+@Table(name = "posts")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,19 +25,19 @@ public class Post {
     @Column(name = "title")
     String title;
 
-    @Column(name= "theme")
+    @Column(name = "theme")
     String themeOfPost;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "category", nullable = false)
     Category category;
 
-    @ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "user_id", nullable = false)
     BlogUser blogUser;
 
-    public Post(BlogUser blogUser, String title , String themeOfPost) {
+    public Post(BlogUser blogUser, String title, String themeOfPost) {
         this.blogUser = blogUser;
         this.title = title;
         this.themeOfPost = themeOfPost;

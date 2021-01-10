@@ -59,6 +59,7 @@ public class SecurityUser implements UserDetails {
 
     /**
      * Method takes a user and converts it to UserDetails
+     *
      * @param blogUser is a user from database
      * @return new Spring Security user
      */
@@ -70,11 +71,7 @@ public class SecurityUser implements UserDetails {
                 blogUser.getStatus().equals(Status.ACTIVE),
                 blogUser.getStatus().equals(Status.ACTIVE),
                 blogUser.getStatus().equals(Status.ACTIVE),
-//                true,
-//                true,
-//                true,
-//                true,
                 blogUser.getRole().getAuthorities()
-               );
+        );
     }
 }

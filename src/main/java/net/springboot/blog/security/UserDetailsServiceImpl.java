@@ -26,11 +26,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String identifier) throws UsernameNotFoundException {
         BlogUser blogUser = null;
         try {
-             blogUser = blogUsersRepository.findByEmail(identifier).orElse(blogUsersRepository.findByUsername(identifier));
+            blogUser = blogUsersRepository.findByEmail(identifier).orElse(blogUsersRepository.findByUsername(identifier));
         } catch (UsernameNotFoundException e) {
             e.printStackTrace();
         }
-            return SecurityUser.fromUser(blogUser);
+        return SecurityUser.fromUser(blogUser);
 
     }
 }
