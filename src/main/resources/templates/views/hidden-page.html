@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="fragments/header :: header"></header>
 
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
 
@@ -18,7 +18,9 @@
             </tr>
 
             <tr th:each="user : ${users}">
-                <td th:text="${user.getEmail()}"></td>
+                <td>
+                    <a th:href="'/user/'+${user.getId()}"  th:text="${user.getEmail()}"></a>
+                </td>
             </tr>
         </table>
 
@@ -28,13 +30,15 @@
             </tr>
 
             <tr th:each="post : ${posts}">
-                <td th:text="${post.getTitle()}"></td>
+                <td >
+                    <a th:href="'/post/'+${post.getPostId()}"  th:text="${post.getTitle()}"></a>
+                </td>
             </tr>
         </table>
     </div>
 </div>
 
 
-<footer th:insert="blocks/footer :: footer"></footer>
+<footer th:insert="fragments/footer :: footer"></footer>
 </body>
 </html>
