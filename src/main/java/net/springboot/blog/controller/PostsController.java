@@ -1,5 +1,6 @@
 package net.springboot.blog.controller;
 
+import net.springboot.blog.model.post.Category;
 import net.springboot.blog.model.post.Post;
 import net.springboot.blog.model.user.BlogUser;
 import net.springboot.blog.service.BlogUsersService;
@@ -30,6 +31,7 @@ public class PostsController {
     @GetMapping(URLS.createPost)
     public String createPost(Model model) {
         model.addAttribute("newPost", new Post());
+        model.addAttribute("categories", Category.values());
         return "views/create-post";
     }
 
@@ -37,9 +39,10 @@ public class PostsController {
     @PostMapping(URLS.createPost)
     public String addPost(@ModelAttribute("newPost") Post post) {
         BlogUser user = (BlogUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (user != null) {
-            post.setBlogUser(user);
-        } else throw new NullPointerException("User is null sorry");
+
+        if (user == null) throw new NullPointerException("User is null sorry");
+
+        post.setBlogUser(user);
 
         postService.savePost(post);
 
@@ -50,15 +53,21 @@ public class PostsController {
     @GetMapping()
     @PreAuthorize("hasAuthority('can:read')")
     public String getAllPosts(Model model) {
+
         model.addAttribute("posts", postService.getAllPosts());
+
         return "views/get-posts";
+
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('can:read')")
     public String getPost(Model model, @PathVariable(value = "id") long id) {
+
         model.addAttribute("post", postService.getPostById(id));
+
         return "views/get-post";
+
     }
 
 }

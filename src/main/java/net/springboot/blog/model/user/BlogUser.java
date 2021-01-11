@@ -17,7 +17,6 @@ import java.util.Collection;
 @Table(name = "users")
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString
 public class BlogUser implements UserDetails{
 
@@ -41,9 +40,11 @@ public class BlogUser implements UserDetails{
     @Column(name = "email", nullable = false)
     String email;
 
-
+    @Column(name = "username")
     String username;
-    String sex;
+
+    @Column(name = "sex")
+    Sex sex;
 
     @NotEmpty(message = "Password can't be empty")
     @Column(name = "password", nullable = false)
@@ -56,15 +57,6 @@ public class BlogUser implements UserDetails{
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status", nullable = false)
     Status status;
-
-    public BlogUser(String firstName, String lastName, String email, String password, Role role, Status status) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.status = status;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

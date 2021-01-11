@@ -14,7 +14,7 @@
                 <a class="nav-link active" href="#">Home
                 </a>
                 <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="https://t.me/Sublime_47">Contact</a>
             </nav>
         </div>
     </header>
@@ -23,7 +23,7 @@
         <main role="main" class="inner cover">
             <div class="container" style="width: 30%">
                 <form class="" th:method="POST" th:action="@{/register}" th:object="${newUser}">
-                    <h2 class="">Login</h2>
+                    <h3 class="form-signin-heading"><a href="/login">Login</a> or Sign up</h3>
                     <p>
                         <label for="email"></label>
                         <br>
@@ -31,6 +31,25 @@
                                class="form-control">
                     <div style="color:darkred" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Email error
                     </div>
+
+                    <p>
+                        <label for="username"></label>
+                        <br>
+                        <input type="text" th:field="*{username}" id="username" name="username"
+                               placeholder="Nickname" class="form-control">
+                    <div style="color:darkred" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+                        FirstName error
+                    </div>
+
+                    <p>
+
+                    <p>
+                        <label for="name"></label>
+                        <br>
+                    <div th:replace="blocks/selectField :: select (Sex, sex, ${sex})">
+
+                    </div>
+                    <p>
 
                     <p>
                         <label for="name"></label>

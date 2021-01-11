@@ -1,6 +1,9 @@
 package net.springboot.blog.controller;
 
+import lombok.SneakyThrows;
 import net.springboot.blog.model.user.BlogUser;
+import net.springboot.blog.model.user.Sex;
+import net.springboot.blog.repository.BlogUsersRepository;
 import net.springboot.blog.service.BlogUsersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +19,11 @@ import javax.validation.Valid;
 public class AuthorizationController {
 
     private final BlogUsersService blogUsersService;
+   private final BlogUsersRepository blogUsersRepository;
 
-    public AuthorizationController(BlogUsersService blogUsersService) {
+    public AuthorizationController(BlogUsersService blogUsersService, BlogUsersRepository blogUsersRepository) {
         this.blogUsersService = blogUsersService;
+        this.blogUsersRepository = blogUsersRepository;
     }
 
     //return s login-form
@@ -31,6 +36,7 @@ public class AuthorizationController {
     @GetMapping(URLS.registerUser)
     public String registerNewUser(Model model) {
         model.addAttribute("newUser", new BlogUser());
+        model.addAttribute("sex" , Sex.values());
         return "auth/register-page";
     }
 
@@ -40,6 +46,12 @@ public class AuthorizationController {
             @ModelAttribute("newUser")
             @Valid BlogUser user,
             BindingResult bindingResult) {
+        if(blogUsersRepository.findByEmail(user.getEmail())!= null) {
+//            throw new Exception();
+            System.out.println("E");
+        }
+
+
         if (bindingResult.hasErrors()) {
             return "auth/register-page";
         }

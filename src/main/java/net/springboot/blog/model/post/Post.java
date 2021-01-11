@@ -1,7 +1,6 @@
 package net.springboot.blog.model.post;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import net.springboot.blog.model.user.BlogUser;
@@ -14,7 +13,6 @@ import javax.persistence.*;
 @Table(name = "posts")
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString
 public class Post {
     @Id
@@ -36,11 +34,5 @@ public class Post {
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "user_id", nullable = false)
     BlogUser blogUser;
-
-    public Post(BlogUser blogUser, String title, String themeOfPost) {
-        this.blogUser = blogUser;
-        this.title = title;
-        this.themeOfPost = themeOfPost;
-    }
 
 }
