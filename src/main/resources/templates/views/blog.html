@@ -14,15 +14,17 @@
         <table>
             <tr>
                 <td class="lead mb-0 font-italic  font-weight-bold">Post author</td>
-                <td class="lead mb-0 font-italic  font-weight-bold">&nbsp; Title </td>
+                <td class="lead mb-0 font-italic  font-weight-bold">&nbsp; Title</td>
             </tr>
 
             <tr th:each="post : ${listOfPosts}">
                 <td>
-                    <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${post.getPostId()}" th:text="${post.getBlogUser()}"></a>
+                    <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${post.getPostId()}"
+                       th:text="${post.getBlogUser().getFirstName()}"></a>
                 </td>
                 <td>
-                    <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${post.getPostId()}" th:text="${post.getTitle()}"></a>
+                    <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${post.getPostId()}"
+                       th:text="${post.getTitle()}"></a>
                 </td>
             </tr>
         </table>

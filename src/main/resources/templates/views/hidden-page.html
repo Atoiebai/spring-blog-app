@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- xmlns:th="http://www.thymeleaf.org"-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,7 +11,29 @@
 
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
 
+    <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <table>
+            <tr>
+                <td>All Users</td>
+            </tr>
+
+            <tr th:each="user : ${users}">
+                <td th:text="${user.getEmail()}"></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td>All Posts</td>
+            </tr>
+
+            <tr th:each="post : ${posts}">
+                <td th:text="${post.getTitle()}"></td>
+            </tr>
+        </table>
+    </div>
 </div>
+
 
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>

@@ -15,7 +15,7 @@ import javax.validation.Valid;
 @Controller
 public class AuthorizationController {
 
-   private final BlogUsersService blogUsersService;
+    private final BlogUsersService blogUsersService;
 
     public AuthorizationController(BlogUsersService blogUsersService) {
         this.blogUsersService = blogUsersService;
@@ -30,7 +30,7 @@ public class AuthorizationController {
     //returns Sign up form for new user
     @GetMapping(URLS.registerUser)
     public String registerNewUser(Model model) {
-         model.addAttribute("newUser" , new BlogUser());
+        model.addAttribute("newUser", new BlogUser());
         return "auth/register-page";
     }
 
@@ -38,9 +38,9 @@ public class AuthorizationController {
     @PostMapping(URLS.registerUser)
     public String getNewUser(
             @ModelAttribute("newUser")
-            @Valid BlogUser user ,
-                             BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
+            @Valid BlogUser user,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "auth/register-page";
         }
         blogUsersService.saveUser(user);
