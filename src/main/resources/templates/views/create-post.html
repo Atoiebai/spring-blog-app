@@ -21,7 +21,8 @@
         <br>
         <div class="row justify-content-center align-items-center">
             <form th:method="POST" th:object="${newPost}">
-                 <div th:replace="blocks/selectField :: select (Category, category, ${categories})"></div>
+                    <div th:replace="blocks/selectField :: select (Category, category, ${categories})"></div>
+                <br>
                 <label>
                     <input type="text" th:field="*{title}" name="blogTitle" placeholder="Title" class="form-control">
                 </label>
