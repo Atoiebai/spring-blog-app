@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="#{get.posts.title}"> </title>
+    <title th:text="#{header.posts}"> </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
     <table>
         <tr>
             <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.posts.author}" >Posts author</td>
-            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.posts.post-title}">&nbsp; Posts title</td>
+            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{create.post.title.placeholder}">&nbsp; Posts title</td>
         </tr>
 
         <tr th:each="post : ${posts}">
