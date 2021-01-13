@@ -51,6 +51,8 @@
                     <div id="genderField"  th:replace="blocks/selectField :: select (Sex, sex, ${sex})">
 
                     </div>
+                    <div style="color:darkred" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Sex
+                    </div>
                     <p>
 
                     <p>
@@ -76,11 +78,14 @@
                         <br>
                         <input type="password" th:field="*{password}" id="password" name="password"
                                th:placeholder="#{auth.password.placeholder}" class="form-control">
+                    <div style="color:darkred" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password
+                        error
+                    </div>
                     </p>
                     <p>
                         <label for="passwordAgain"></label>
                         <br>
-                        <input type="password" id="passwordAgain" name="passwordAgain"
+                        <input type="password" th:field="*{confirmationPassword}" id="passwordAgain" name="passwordAgain"
                                th:placeholder="#{password-remember}" class="form-control">
                     </p>
                     <button class="btn btn-lg btn-primary btn-block" th:text="#{auth.sign-up}">Register now</button>

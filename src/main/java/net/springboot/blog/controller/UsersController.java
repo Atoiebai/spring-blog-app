@@ -47,6 +47,7 @@ public class UsersController {
         try {
             BlogUser blogUser = usersService.getUser(id);
             model.addAttribute("user", blogUser);
+
         } catch (EntityNotFoundException e) {
             model.addAttribute("message", "No user with such id. Try to use another one");
         }

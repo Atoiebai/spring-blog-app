@@ -40,6 +40,7 @@ public class BlogUser implements UserDetails{
     @Column(name = "email", nullable = false)
     String email;
 
+    @NotEmpty(message = "username should not be empty")
     @Column(name = "username")
     String username;
 
@@ -49,6 +50,9 @@ public class BlogUser implements UserDetails{
     @NotEmpty(message = "Password can't be empty")
     @Column(name = "password", nullable = false)
     String password;
+
+    @NotEmpty
+    String confirmationPassword;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "role", nullable = false)
@@ -81,5 +85,9 @@ public class BlogUser implements UserDetails{
     @Override
     public boolean isEnabled() {
         return status.equals(Status.ACTIVE);
+    }
+
+    public boolean checkPassword() {
+     return confirmationPassword.equals(password);
     }
 }

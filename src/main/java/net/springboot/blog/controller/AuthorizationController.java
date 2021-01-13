@@ -8,6 +8,7 @@ import net.springboot.blog.service.BlogUsersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,10 +48,11 @@ public class AuthorizationController {
             @Valid BlogUser user,
             BindingResult bindingResult) {
         if(blogUsersRepository.findByEmail(user.getEmail())!= null) {
-//            throw new Exception();
-            System.out.println("E");
+            bindingResult.addError(new FieldError("user" ,"email" , "email already in use | почта уже используется"));
         }
-
+        if(!user.checkPassword()) {
+            bindingResult.addError(new FieldError("user" ,"password" , "passwords are not match | пароли не совпадают"));
+        }
 
         if (bindingResult.hasErrors()) {
             return "auth/register-page";
