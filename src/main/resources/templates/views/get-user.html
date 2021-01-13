@@ -12,7 +12,7 @@
     <div>
         <p class="lead mb-0 font-italic font-weight-bold" th:text="#{get.user.about}"> about this User</p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.user.username} + ${user.getUsername()}"></p>
+        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{auth.username.placeholder}+ ': ' + ${user.getUsername()}"></p>
         <br>
         <p class="lead mb-0 font-italic  font-weight-bold"
            th:text="'Name: ' + ${user.getFirstName()} + ' '+ ${user.getLastName()}"></p>

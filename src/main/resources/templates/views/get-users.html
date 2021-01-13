@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="#{get.users.title}">Authors</title>
+    <title th:text="#{header.authors}">Authors</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -10,7 +10,7 @@
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <table>
         <tr>
-            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.users.username}">ID</td>
+            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{auth.username.placeholder}">ID</td>
             <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.users.name}">&nbsp; Authors name</td>
         </tr>
 
