@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Get Method</title>
+    <title th:text="#{get.user.about}">About</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -10,16 +10,16 @@
 
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div>
-        <p class="lead mb-0 font-italic font-weight-bold">Here is some information about this User</p>
+        <p class="lead mb-0 font-italic font-weight-bold" th:text="#{get.user.about}"> about this User</p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="'Users id: '+ ${user.getId()}"></p>
+        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.user.username} + ${user.getUsername()}"></p>
         <br>
         <p class="lead mb-0 font-italic  font-weight-bold"
            th:text="'Name: ' + ${user.getFirstName()} + ' '+ ${user.getLastName()}"></p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="'Blog themes: '"></p>
+        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.user.blog-themes}"></p>
         <br>
-        <p class="lead mb=0 font-italic font-weight-bold" th:text="'Total posts: '"></p>
+        <p class="lead mb=0 font-italic font-weight-bold" th:text="#{get.user.total-posts}"></p>
     </div>
 </div>
 <footer th:insert="fragments/footer :: footer"></footer>

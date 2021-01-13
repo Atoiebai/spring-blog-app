@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>New Post</title>
+    <title th:text="#{create.post.new}">New Post</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -13,9 +13,9 @@
 
     <div class="container mt-5 mb-5" style="text-align: center">
 
-        <p class="cover-heading lead"> Want to write your thoughts? or maybe share with your memories?</p>
-        <p class="lead"> So , you came to the right place. Lets create something new and post it.</p>
-        <p class="lead"> Remember that your posts should not humiliate anyone or contain inappropriate content. </p>
+        <p class="cover-heading lead" th:text="#{create.post.desc.chl}"> Want to write your thoughts? or maybe share with your memories?</p>
+        <p class="lead" th:text="#{create.post.desc.first}"> So , you came to the right place. Lets create something new and post it.</p>
+        <p class="lead" th:text="#{create.post.desc.second}"> Remember that your posts should not humiliate anyone or contain inappropriate content. </p>
 
         <br>
         <div class="row justify-content-center align-items-center">
@@ -23,15 +23,15 @@
                 <div th:replace="blocks/selectField :: select (Category, category, ${categories})"></div>
                 <br>
                 <label>
-                    <input type="text" th:field="*{title}" name="blogTitle" placeholder="Title" class="form-control">
+                    <input type="text" th:field="*{title}" name="blogTitle" th:placeholder="#{create.post.title.placeholder}" class="form-control">
                 </label>
                 <br>
                 <label>
-                    <textarea name="postDetails" th:field="*{themeOfPost}" placeholder="Write your post"
+                    <textarea name="postDetails" th:field="*{themeOfPost}" th:placeholder="#{create.post.theme.placeholder}"
                               class="form-control"></textarea>
                 </label>
                 <br>
-                <button type="submit" class="btn btn-success">Add post</button>
+                <button type="submit" class="btn btn-success" th:text="#{create.post.add}">Add post</button>
             </form>
         </div>
 
