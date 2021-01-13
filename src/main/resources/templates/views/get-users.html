@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Authors</title>
+    <title th:text="#{get.users.title}">Authors</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -10,20 +10,19 @@
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <table>
         <tr>
-            <td class="lead mb-0 font-italic  font-weight-bold">ID</td>
-            <td class="lead mb-0 font-italic  font-weight-bold">&nbsp; Authors name</td>
+            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.users.username}">ID</td>
+            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.users.name}">&nbsp; Authors name</td>
         </tr>
 
         <tr th:each="blogUser : ${users}">
             <td>
                 <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${blogUser.getId()}"
-                   th:text="${blogUser.getId()}"></a>
+                   th:text="${blogUser.getUsername()}"></a>
             </td>
             <td>
                 <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${blogUser.getId()}"
                    th:text="${blogUser.getFirstName()}"></a>
             </td>
-
 
         </tr>
     </table>

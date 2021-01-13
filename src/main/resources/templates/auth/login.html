@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="#{auth.login.title}">Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
@@ -10,12 +10,12 @@
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <header class="masthead mb-auto">
         <div class="inner">
-            <h4 class="masthead-brand">Cover</h4>
+            <h4 class="masthead-brand" th:text="#{auth.masterhead}">Cover</h4>
             <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" href="#">Home
+                <a class="nav-link active" th:text="#{auth.home.link}" href="#">Home
                 </a>
-                <a class="nav-link" href="#">Features</a>
-                <a class="nav-link" href="https://t.me/Sublime_47">Contact</a>
+                <a class="nav-link" th:text="#{auth.features.link}" href="#">Features</a>
+                <a class="nav-link" th:text="#{auth.contact.link}" href="https://t.me/Sublime_47">Contact</a>
             </nav>
         </div>
     </header>
@@ -24,18 +24,20 @@
         <main role="main" class="inner cover">
             <div class="container" style="width: 30%">
                 <form class="form-signin-heading" method="post" action="/login">
-                    <h3 class="form-signin-heading">Login or <a href="/register">Sign up</a></h3>
+                    <h4><a href="/register" th:text="#{auth.sign-up}">Sign up</a></h4>
+                    <h5 th:text="#{auth.or}">or</h5>
+                    <h3 class="form-signin-heading" th:text="#{auth.login}">Login </h3>
                     <p>
                         <label for="username"></label>
-                        <input type="text" id="username" name="username" placeholder="Username" class="form-control">
+                        <input type="text" id="username" name="username" th:placeholder="#{auth.username.placeholder}" class="form-control">
                     </p>
 
                     <p>
                         <label for="password"></label>
-                        <input type="password" id="password" name="password" placeholder="Password"
+                        <input type="password" id="password" name="password" th:placeholder="#{auth.password.placeholder}"
                                class="form-control">
                     </p>
-                    <button class="btn btn-lg btn-primary btn-block">Sign in</button>
+                    <button class="btn btn-lg btn-primary btn-block" th:text="#{auth.sign-in.button}">Sign in</button>
                 </form>
             </div>
         </main>
@@ -43,7 +45,7 @@
 </div>
 <footer class="mastfoot mt-auto">
     <div class="inner">
-        <p>Project blog created by <a href="https://github.com/Atoiebai">Atoiebai</a>.</p>
+        <span th:text="#{auth.login.created.by}">Project blog created by</span>  <a href="https://github.com/Atoiebai">Atoiebai</a>
     </div>
 </footer>
 </body>
