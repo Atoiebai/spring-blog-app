@@ -23,6 +23,8 @@
     <h4 th:text="${currentUser.getRole()}"></h4>
     </p>
     <p>
+        <a class="py-2 d-none d-md-inline-block" th:text="#{header.create-post}" href="/post/create">Create new post</a>
+
 
 </div>
 <footer th:insert="fragments/footer :: footer"></footer>

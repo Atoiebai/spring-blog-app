@@ -46,9 +46,12 @@
                     <p>
 
                     <p>
+                    <div>
+
+                    </div>
                         <label for="genderField"></label>
                         <br>
-                    <div id="genderField"  th:replace="blocks/selectField :: select (Sex, sex, ${sex})">
+                    <div id="genderField"  th:insert="blocks/selectField :: select (Sex, sex, ${sex})">
 
                     </div>
                     <div style="color:darkred" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Sex

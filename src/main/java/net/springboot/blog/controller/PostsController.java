@@ -3,7 +3,6 @@ package net.springboot.blog.controller;
 import net.springboot.blog.model.post.Category;
 import net.springboot.blog.model.post.Post;
 import net.springboot.blog.model.user.BlogUser;
-import net.springboot.blog.service.BlogUsersService;
 import net.springboot.blog.service.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,12 +17,8 @@ public class PostsController {
 
     private final PostService postService;
 
-    private final BlogUsersService blogUsersService;
-
-
-    public PostsController(PostService postService, BlogUsersService service) {
+    public PostsController(PostService postService) {
         this.postService = postService;
-        this.blogUsersService = service;
 
     }
 
@@ -38,6 +33,7 @@ public class PostsController {
 
     @PostMapping(URLS.createPost)
     public String addPost(@ModelAttribute("newPost") Post post) {
+
         BlogUser user = (BlogUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (user == null) throw new NullPointerException("User is null sorry");

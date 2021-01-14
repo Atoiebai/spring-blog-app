@@ -1,6 +1,5 @@
 package net.springboot.blog.controller;
 
-import lombok.SneakyThrows;
 import net.springboot.blog.model.user.BlogUser;
 import net.springboot.blog.model.user.Sex;
 import net.springboot.blog.repository.BlogUsersRepository;
