@@ -37,7 +37,7 @@ public class BlogsController {
     public String showBlog(Model model) {
         //TODO: main page of blog
         model.addAttribute("listOfPosts", postService.getAllPosts());
-        return "views/blog";
+        return "views/blog-copy";
     }
 
 }
