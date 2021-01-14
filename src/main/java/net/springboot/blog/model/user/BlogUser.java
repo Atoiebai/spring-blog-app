@@ -44,6 +44,7 @@ public class BlogUser implements UserDetails{
     @Column(name = "username")
     String username;
 
+//    @Enumerated(value = EnumType.STRING)
     @Column(name = "sex")
     Sex sex;
 
