@@ -1,0 +1,8 @@
+1. Need to fix select field after validation
+2. Need to change blog-page to work with diff categories
+3. Posts should be added from personal page
+4. Posts should be available by checking category
+5. Add register date to users
+6. add date to posts
+7. add bio to users
+

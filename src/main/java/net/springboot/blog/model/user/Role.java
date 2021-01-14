@@ -1,7 +1,6 @@
 package net.springboot.blog.model.user;
 
 
-import net.springboot.blog.model.user.Permission;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Set;
@@ -9,14 +8,10 @@ import java.util.stream.Collectors;
 
 public enum Role {
 
-    USER(Set.of(Permission.CAN_READ)) ,
-    ADMIN(Set.of(
-            Permission.CAN_WRITE,
-            Permission.CAN_READ
-//            Permission.CAN_DELETE,
-//            Permission.CAN_POST
-    )
-    );
+    ADMIN(Set.of(Permission.values())),
+    MODERATOR(Set.of(Permission.getModerPermissions())),
+    USER(Set.of(Permission.getUserPermissions())),
+    GUEST(Set.of(Permission.CAN_READ));
 
     private final Set<Permission> permissions;
 

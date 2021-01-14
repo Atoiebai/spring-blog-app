@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-
     <meta charset="UTF-8">
+    <title th:text="${post.getTitle()}"></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="fragments/header :: header"></header>
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div>
-        <p class="lead mb-0 font-italic font-weight-bold">Here is some information about this post</p>
+        <p class="lead mb-0 font-italic font-weight-bold" th:text="#{get.post.info}">About post</p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="'Post id: '+ ${post.getPostId()}"></p>
+        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.post.id} + ${post.getPostId()}"></p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="'Post: ' + ${post.getThemeOfPost()} + '... '"></p>
+        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.post.theme} + ${post.getThemeOfPost()} + '... '"></p>
         <br>
-        <p class="lead mb=0 font-italic font-weight-bold" th:text="'Total views: '"></p>
+        <p class="lead mb=0 font-italic font-weight-bold" th:text="#{get.post.views}"></p>
     </div>
 </div>
-<footer th:insert="blocks/footer :: footer"></footer>
+<footer th:insert="fragments/footer :: footer"></footer>
 </body>
 </html>

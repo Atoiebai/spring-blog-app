@@ -2,30 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Authors</title>
+    <title th:text="#{header.authors}">Authors</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="fragments/header :: header"></header>
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
- <table>
-     <tr>
-         <td class="lead mb-0 font-italic  font-weight-bold">ID</td>
-         <td class="lead mb-0 font-italic  font-weight-bold">&nbsp; Authors name </td>
-     </tr>
+    <table>
+        <tr>
+            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{auth.username.placeholder}">ID</td>
+            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.users.name}">&nbsp; Authors name</td>
+        </tr>
 
-     <tr th:each="blogUser : ${users}">
-         <td>
-             <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${blogUser.getId()}" th:text="${blogUser.getId()}"></a>
-         </td>
-         <td>
-            <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${blogUser.getId()}" th:text="${blogUser.getFirstName()}"></a>
-        </td>
+        <tr th:each="blogUser : ${users}">
+            <td>
+                <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${blogUser.getId()}"
+                   th:text="${blogUser.getUsername()}"></a>
+            </td>
+            <td>
+                <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${blogUser.getId()}"
+                   th:text="${blogUser.getFirstName()}"></a>
+            </td>
 
-
-
-    </tr>
- </table>
+        </tr>
+    </table>
 </div>
+<footer th:insert="fragments/footer :: footer"></footer>
 </body>
 </html>

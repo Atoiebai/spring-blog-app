@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<header th:insert="fragments/header :: header"></header>
+
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <p>
+    <h4 th:text="${currentUser.getEmail()}"></h4>
+    </p>
+    <p>
+    <h4 th:text="${currentUser.getFirstName()}">&nbsp</h4>
+    <h4 th:text="${currentUser.getLastName()}"></h4>
+    </p>
+    <p>
+    <h4 th:text="${currentUser.getStatus()}"></h4>
+    </p>
+    <p>
+    <h4 th:text="${currentUser.getRole()}"></h4>
+    </p>
+    <p>
+        <a class="py-2 d-none d-md-inline-block" th:text="#{header.create-post}" href="/post/create">Create new post</a>
+
+
+</div>
+<footer th:insert="fragments/footer :: footer"></footer>
+</body>
+</html>

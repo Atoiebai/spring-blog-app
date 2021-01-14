@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl(URLS.homePage)
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout" , "POST"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "POST"))
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")
@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     protected UserDetailsService userDetailsService() {
-        return  new InMemoryUserDetailsManager();
+        return new InMemoryUserDetailsManager();
     }
 
     @Bean

@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <title>New Post</title>
+    <title th:text="#{create.post.new}">New Post</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="fragments/header :: header"></header>
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
 
-    <span id="principalIdentifier" sec:authentication property="principal.id"></span> |
-     <span sec:authentication="principal.authorities"></span>
+    <div class="container mt-5 mb-5" style="text-align: center">
 
-
-    <div class="container mt-5 mb-5">
-
-        <p class="cover-heading lead">Remember that you don't need to enter your real name.</p>
-        <p class="lead"> Here you can be whoever you want. But we need to know who you want to be</p>
-        <p class="lead"> Please enter your name(real name , nickname or stay anonymous), and create your new post</p>
+        <p class="cover-heading lead" th:text="#{create.post.desc.chl}"> Want to write your thoughts? or maybe share with your memories?</p>
+        <p class="lead" th:text="#{create.post.desc.first}"> So , you came to the right place. Lets create something new and post it.</p>
+        <p class="lead" th:text="#{create.post.desc.second}"> Remember that your posts should not humiliate anyone or contain inappropriate content. </p>
 
         <br>
+        <div class="row justify-content-center align-items-center">
+            <form th:method="POST" th:object="${newPost}">
+                <div th:replace="blocks/selectField :: select (Category, category, ${categories})"></div>
+                <br>
+                <label>
+                    <input type="text" th:field="*{title}" name="blogTitle" th:placeholder="#{create.post.title.placeholder}" class="form-control">
+                </label>
+                <br>
+                <label>
+                    <textarea name="postDetails" th:field="*{themeOfPost}" th:placeholder="#{create.post.theme.placeholder}"
+                              class="form-control"></textarea>
+                </label>
+                <br>
+                <button type="submit" class="btn btn-success" th:text="#{create.post.add}">Add post</button>
+            </form>
+        </div>
 
-        <form th:method="POST"  th:object="${newPost}" >
-
-            <label>
-                <input type="text" th:field="*{title}" name="blogTitle" placeholder="Title" class="form-control">
-            </label>
-            <br>
-            <label>
-                <textarea name="postDetails" th:field="*{themeOfPost}" placeholder="Type your post" class="form-control"></textarea>
-            </label>
-            <br>
-            <button type="submit" class="btn btn-success">Add post</button>
-        </form>
     </div>
-
 </div>
 
 
-<footer th:insert="blocks/footer :: footer"></footer>
+<footer th:insert="fragments/footer :: footer"></footer>
 </body>
 </html>
