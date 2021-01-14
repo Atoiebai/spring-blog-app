@@ -49,6 +49,7 @@ public class AuthorizationController {
         if(blogUsersRepository.findByEmail(user.getEmail())!= null) {
             bindingResult.addError(new FieldError("user" ,"email" , "email already in use | почта уже используется"));
         }
+
         if(!user.checkPassword()) {
             bindingResult.addError(new FieldError("user" ,"password" , "passwords are not match | пароли не совпадают"));
         }
