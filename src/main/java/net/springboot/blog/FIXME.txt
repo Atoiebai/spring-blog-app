@@ -3,6 +3,6 @@
 3. Posts should be added from personal page
 4. Posts should be available by checking category
 5. Add register date to users
-6. add date to posts
-7. add bio to users
-
+6. Add date to posts
+7. Add bio to users
+8. Logging
