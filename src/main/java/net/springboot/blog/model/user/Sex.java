@@ -10,8 +10,12 @@ public enum Sex {
         this.sex = sex;
     }
 
-    public String getName() {
+    @Override
+    public String toString() {
         return sex;
     }
 
+    public String getValue() {
+        return this.name();
+    }
 }

@@ -58,6 +58,7 @@ public class AuthorizationController {
         if (bindingResult.hasErrors()) {
             return "auth/register-page";
         }
+
         blogUsersService.saveUser(user);
 
         return "auth/login";

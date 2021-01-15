@@ -16,10 +16,16 @@ public enum Category {
         this.desc = desc;
     }
 
-    public String getName() {
-        return categoryName;
-    }
     public String getDesc() {
         return desc;
+    }
+
+    @Override
+    public String toString() {
+        return categoryName;
+    }
+
+    public String getValue() {
+        return this.name();
     }
 }

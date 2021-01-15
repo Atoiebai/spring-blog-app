@@ -1,9 +1,9 @@
 package net.springboot.blog.model.user;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Entity
@@ -18,7 +19,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @ToString
-public class BlogUser implements UserDetails{
+public class BlogUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,9 +45,16 @@ public class BlogUser implements UserDetails{
     @Column(name = "username")
     String username;
 
-//    @Enumerated(value = EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "sex")
     Sex sex;
+
+    @Column(name = "bio")
+    String bio;
+
+    @CreationTimestamp
+    @Column(nullable = false)
+    private LocalDateTime created;
 
     @NotEmpty(message = "Password can't be empty")
     @Column(name = "password", nullable = false)
@@ -89,6 +97,6 @@ public class BlogUser implements UserDetails{
     }
 
     public boolean checkPassword() {
-     return confirmationPassword.equals(password);
+        return confirmationPassword.equals(password);
     }
 }
