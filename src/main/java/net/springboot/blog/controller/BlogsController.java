@@ -15,23 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(URLS.blogPage)
 public class BlogsController {
 
-
     public final PostService postService;
 
-    @Value("${spring.datasource.username}")
-    String user; //username for database connection
-    @Value("${spring.datasource.password}")
-    String password; //password for database connection
-    @Value("${spring.datasource.url}")
-    String urlDb; //url for database connection
-
-    public final JdbcTemplate jdbcTemplate;
-
-    public BlogsController(JdbcTemplate jdbcTemplate, PostService postService) {
-        this.jdbcTemplate = jdbcTemplate;
+    public BlogsController( PostService postService) {
         this.postService = postService;
     }
-
 
     @GetMapping()
     @PreAuthorize("hasAuthority('can:read')") //access only for authorized users
@@ -40,6 +28,12 @@ public class BlogsController {
         model.addAttribute("listOfPosts", postService.getAllPosts());
         model.addAttribute("categories" , Category.values());
         return "views/blog-copy";
+    }
+
+    @GetMapping(URLS.categoryPage)
+    public String showCategories(Model model) {
+
+        return "views/category";
     }
 
 }

@@ -42,7 +42,7 @@ public class PostsController {
 
         postService.savePost(post);
 
-        return "redirect:/post";
+        return "views/blog";
     }
 
 

@@ -6,3 +6,4 @@
 6. Add date to posts
 7. Add bio to users
 8. Logging
+9. Subscribing for users

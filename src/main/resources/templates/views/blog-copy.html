@@ -21,6 +21,7 @@
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="sidebar-sticky pt-3">
+                <li class="nav-item"> <a href="/blog/category" th:text="#{category}"></a>  </li>
                 <ul class="nav flex-column" th:each="category : ${categories}">
                     <li class="nav-item"><a class="nav-link" th:href="'/category/'+${category.getName()}" th:text="${category.getDesc()}"></a></li>
 <!--                    <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>-->

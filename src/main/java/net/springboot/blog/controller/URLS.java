@@ -15,5 +15,6 @@ public class URLS {
     public static final String createPost = "/create";
     public static final String registerUser = "/register";
     public static final String personalPage = "/mine";
+    public static final String categoryPage = "/category";
 
 }
