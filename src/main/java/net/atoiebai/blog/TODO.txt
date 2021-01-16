@@ -10,3 +10,4 @@
 10. Add slugs
 11. Add draft and archive
 12. Add update date
+13. Return posts by diff parameters

@@ -36,6 +36,15 @@ public class Post {
     Category category;
 
     @Column(nullable = false)
+    String slug;
+
+    @Column(nullable = false)
     Date createdAt = new Date();
+
+    @Column(nullable = false)
+    boolean archived;
+
+    @Column(nullable = false)
+    boolean drafted;
 
 }

@@ -1,9 +1,9 @@
 package net.atoiebai.blog.controller;
 
 import net.atoiebai.blog.model.user.BlogUser;
+import net.atoiebai.blog.model.user.Sex;
 import net.atoiebai.blog.repository.BlogUsersRepository;
 import net.atoiebai.blog.service.BlogUsersService;
-import net.atoiebai.blog.model.user.Sex;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +19,7 @@ import javax.validation.Valid;
 public class AuthorizationController {
 
     private final BlogUsersService blogUsersService;
-   private final BlogUsersRepository blogUsersRepository;
+    private final BlogUsersRepository blogUsersRepository;
 
     public AuthorizationController(BlogUsersService blogUsersService, BlogUsersRepository blogUsersRepository) {
         this.blogUsersService = blogUsersService;
@@ -36,7 +36,7 @@ public class AuthorizationController {
     @GetMapping(URLS.registerUser)
     public String registerNewUser(Model model) {
         model.addAttribute("newUser", new BlogUser());
-        model.addAttribute("sex" , Sex.values());
+        model.addAttribute("sex", Sex.values());
         return "auth/register-page";
     }
 
@@ -47,12 +47,12 @@ public class AuthorizationController {
             @Valid BlogUser user,
             BindingResult bindingResult) {
 
-        if(blogUsersRepository.findByEmail(user.getEmail())!= null) {
-            bindingResult.addError(new FieldError("user" ,"email" , "email already in use | почта уже используется"));
+        if (blogUsersRepository.findByEmail(user.getEmail()) != null) {
+            bindingResult.addError(new FieldError("user", "email", "email already in use | почта уже используется"));
         }
 
-        if(!user.checkPassword()) {
-            bindingResult.addError(new FieldError("user" ,"password" , "passwords are not match | пароли не совпадают"));
+        if (!user.checkPassword()) {
+            bindingResult.addError(new FieldError("user", "password", "passwords are not match | пароли не совпадают"));
         }
 
         if (bindingResult.hasErrors()) {
