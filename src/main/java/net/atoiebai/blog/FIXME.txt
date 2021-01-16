@@ -7,3 +7,6 @@
 7. Add bio to users
 8. Logging
 9. Subscribing for users
+10. Add slugs
+11. Add draft and archive
+12. Add update date

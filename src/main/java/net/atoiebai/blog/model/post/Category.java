@@ -3,9 +3,9 @@ package net.atoiebai.blog.model.post;
 public enum Category {
 
     TECH("Technician", "IT, Computers, Technologies"),
-    BEAUTY("Beauty", "Beauty, Fashion") ,
-    SPORT("Sport", "Football , Basketball") ,
-    GAMES("Games", "Cyberpunk") ,
+    BEAUTY("Beauty", "Beauty, Fashion"),
+    SPORT("Sport", "Football , Basketball"),
+    GAMES("Games", "Cyberpunk"),
     OTHER("Other", "Other");
 
     private final String categoryName;
@@ -25,7 +25,7 @@ public enum Category {
         return categoryName;
     }
 
-    public String getValue() {
+    public String getId() {
         return this.name();
     }
 }

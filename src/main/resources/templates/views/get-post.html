@@ -9,13 +9,13 @@
 <header th:insert="fragments/header :: header"></header>
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div>
-        <p class="lead mb-0 font-italic font-weight-bold" th:text="#{get.post.info}">About post</p>
+        <p class=" font-weight-bold" th:text="#{get.post.info}">About post</p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.post.id} + ${post.getPostId()}"></p>
+        <p class="font-weight-bold" th:text="#{get.post.id} + ${post.getPostId()}"></p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.post.theme} + ${post.getThemeOfPost()} + '... '"></p>
+        <p class="font-weight-bold" th:text="#{get.post.theme} + ${post.getThemeOfPost()} + '... '"></p>
         <br>
-        <p class="lead mb=0 font-italic font-weight-bold" th:text="#{get.post.views}"></p>
+        <p class="font-weight-bold" th:text="#{get.post.views}"></p>
     </div>
 </div>
 <footer th:insert="fragments/footer :: footer"></footer>

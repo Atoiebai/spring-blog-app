@@ -2,7 +2,7 @@
    <div>
 <!--th:with="valid=${!#fields.hasErrors(name)}">&ndash;&gt;-->
         <select th:field="*{__${name}__}" class="form-control">
-            <option id="name" th:each="item : ${items}" th:value="${item.getValue()}"
+            <option id="name" th:each="item : ${items}" th:value="${item.getId()}"
                     th:text="${item}">
             </option>
         </select>
