@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{get.user.about}">About</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <header th:insert="fragments/header :: header"></header>
 
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div>
-        <p class="lead mb-0 font-italic font-weight-bold" th:text="#{get.user.about}"> about this User</p>
+        <p class="font-weight-bold" th:text="#{get.user.about}"> about this User</p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{auth.username.placeholder}+ ': ' + ${user.getUsername()}"></p>
+        <p class="font-weight-bold" th:text="#{auth.username.placeholder}+ ': ' + ${user.getUsername()}"></p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold"
+        <p class="font-weight-bold"
            th:text="'Name: ' + ${user.getFirstName()} + ' '+ ${user.getLastName()}"></p>
         <br>
-        <p class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.user.blog-themes}"></p>
+        <p class="font-weight-bold" th:text="#{get.user.blog-themes}"></p>
         <br>
-        <p class="lead mb=0 font-italic font-weight-bold" th:text="#{get.user.total-posts}"></p>
+        <p class="font-weight-bold" th:text="#{get.user.total-posts}"></p>
     </div>
 </div>
 <footer th:insert="fragments/footer :: footer"></footer>

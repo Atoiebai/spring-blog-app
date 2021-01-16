@@ -23,44 +23,37 @@ public class BlogUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     Long id;
 
-    @NotEmpty(message = "Name field can't be empty")
-    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
     @Column(name = "first_name", nullable = false)
+    @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)")
     String firstName;
 
-    @NotEmpty(message = "Surname field can't be empty")
-    @Size(min = 2, max = 30, message = "Surname should be between 2 and 30 characters")
     @Column(name = "last_name", nullable = false)
+    @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)")
     String lastName;
 
-    @NotEmpty(message = "Email can't be empty")
     @Email(message = "Invalid email address")
+    @NotEmpty(message = "required field | обязательное поле")
     @Column(name = "email", nullable = false)
     String email;
 
-    @NotEmpty(message = "username should not be empty")
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
+    @NotEmpty(message = "required field | обязательное поле")
     String username;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "sex")
+    @Column(name = "sex", nullable = false)
     Sex sex;
 
     @Column(name = "bio")
     String bio;
 
-    @CreationTimestamp
-    @Column(nullable = false)
-    private LocalDateTime created;
-
-    @NotEmpty(message = "Password can't be empty")
     @Column(name = "password", nullable = false)
+    @NotEmpty(message = "required field | обязательное поле")
     String password;
 
-    @NotEmpty
+    @Transient
     String confirmationPassword;
 
     @Enumerated(value = EnumType.STRING)
@@ -70,6 +63,10 @@ public class BlogUser implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status", nullable = false)
     Status status;
+
+    @CreationTimestamp
+    @Column(name = "created", nullable = false)
+    private LocalDateTime created;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

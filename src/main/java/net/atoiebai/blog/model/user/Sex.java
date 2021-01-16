@@ -15,7 +15,7 @@ public enum Sex {
         return sex;
     }
 
-    public String getValue() {
+    public String getId() {
         return this.name();
     }
 }

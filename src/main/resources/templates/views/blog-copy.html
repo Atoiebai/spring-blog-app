@@ -2,72 +2,44 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title th:text="#{whats.new}"></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <header th:insert="fragments/header :: header"></header>
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Company name</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
-            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#" th:text="#{tags}"> </a>
+    <button aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
+            class="navbar-toggler position-absolute d-md-none collapsed" data-target="#sidebarMenu" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <input aria-label="Search" class="form-control form-control-dark w-100" placeholder="Search" type="text">
 
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" id="sidebarMenu">
             <div class="sidebar-sticky pt-3">
-                <li class="nav-item"> <a href="/blog/category" th:text="#{category}"></a>  </li>
+                <p class="nav-item"><a class="nav-link" href="/blog/category" th:text="#{category}"></a></p>
                 <ul class="nav flex-column" th:each="category : ${categories}">
-                    <li class="nav-item"><a class="nav-link" th:href="'/category/'+${category}" th:text="${category.getDesc()}"></a></li>
-<!--                    <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>-->
-<!--                    <li class="nav-item"><a class="nav-link" href="#">Orders</a></li>-->
-<!--                    <li class="nav-item"><a class="nav-link" href="#">Products</a></li>-->
-<!--                    <li class="nav-item"><a class="nav-link" href="#">Customers</a></li>-->
-<!--                    <li class="nav-item"><a class="nav-link" href="#">Reports</a></li>-->
-<!--                    <li class="nav-item"><a class="nav-link" href="#">Integrations</a></li>-->
+                    <li class="nav-item"><a class="nav-link" th:href="'/category/'+${category}"
+                                            th:text="${category.getDesc()}"></a></li>
                 </ul>
 
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Saved reports</span>
-                    <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-
-                    </a>
+                    <span th:text="#{top.users}"></span>
                 </h6>
                 <ul class="nav flex-column mb-2">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-
-                            Current month
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-
-                            Last quarter
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-
-                            Social engagement
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-
-                            Year-end sale
-                        </a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#" th:text="#{current.month}"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" th:text="#{last.quarter}"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" th:text="#{last.year}"></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" th:text="#{all.time}"></a></li>
                 </ul>
             </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4" role="main">
             <div class="chartjs-size-monitor"
                  style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
                 <div class="chartjs-size-monitor-expand"
@@ -80,22 +52,22 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <h1 class="h2" th:text="#{whats.new}"></h1>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <tr>
-                        <td class="lead mb-0 font-italic  font-weight-bold">Post author</td>
-                        <td class="lead mb-0 font-italic  font-weight-bold">&nbsp; Title</td>
+                        <td class="font-weight-bold" th:text="#{get.posts.author}"></td>
+                        <td class="font-weight-bold" th:text="#{create.post.title.placeholder}">&nbsp</td>
                     </tr>
 
                     <tr th:each="post : ${listOfPosts}">
                         <td>
-                            <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/user/'+${post.getPostId()}"
+                            <a class="font-weight-bold" th:href="'/user/'+${post.getPostId()}"
                                th:text="${post.getBlogUser().getFirstName()}"></a>
                         </td>
                         <td>
-                            <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/post/'+${post.getPostId()}"
+                            <a class="font-weight-bold" th:href="'/post/'+${post.getPostId()}"
                                th:text="${post.getTitle()}"></a>
                         </td>
                     </tr>

@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import net.atoiebai.blog.model.user.BlogUser;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -21,6 +19,10 @@ public class Post {
     @Column(name = "id")
     Long postId;
 
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    BlogUser blogUser;
+
     @Column(name = "title")
     @NotEmpty
     String title;
@@ -32,9 +34,16 @@ public class Post {
     @Column(name = "category", nullable = false)
     Category category;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JoinColumn(name = "user_id", nullable = false)
-    BlogUser blogUser;
+//    @Column(nullable = false)
+//    String slug;
+//
+//    @Column(nullable = false)
+//    Date createdAt = new Date();
+//
+//    @Column(nullable = false)
+//    boolean archived;
+//
+//    @Column(nullable = false)
+//    boolean drafted;
 
 }

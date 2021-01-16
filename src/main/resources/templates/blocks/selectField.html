@@ -1,16 +1,16 @@
 <th:block th:fragment="select (label, name, items)">
-   <div>
-<!--th:with="valid=${!#fields.hasErrors(name)}">&ndash;&gt;-->
-        <select th:field="*{__${name}__}" class="form-control">
-            <option id="name" th:each="item : ${items}" th:value="${item.getValue()}"
-                    th:text="${item}">
+    <div>
+        <!--th:with="valid=${!#fields.hasErrors(name)}">&ndash;&gt;-->
+        <select class="form-control" th:field="*{__${name}__}">
+            <option id="name" th:each="item : ${items}" th:text="${item}"
+                    th:value="${item.getId()}">
             </option>
         </select>
-<!--        <span th:if="${valid}"-->
-<!--              aria-hidden="false"></span>-->
-<!--        <th:block th:if="${!valid}">-->
-<!--            <span aria-hidden="true"></span>-->
-<!--            <span th:errors="*{__${name}__}">Error</span>-->
-<!--        </th:block>-->
+        <!--        <span th:if="${valid}"-->
+        <!--              aria-hidden="false"></span>-->
+        <!--        <th:block th:if="${!valid}">-->
+        <!--            <span aria-hidden="true"></span>-->
+        <!--            <span th:errors="*{__${name}__}">Error</span>-->
+        <!--        </th:block>-->
     </div>
 </th:block>

@@ -3,19 +3,25 @@
 <head>
     <title th:text="#{start.page.title}">Main Blog</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <header th:insert="fragments/header :: header"></header>
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-        <h1 class="display-4 font-italic" th:text="#{start.page.welcome}">&nbsp;Welcome to our new &nbsp;social product </h1>
+        <h1 class="display-4 font-italic" th:text="#{start.page.welcome}">&nbsp;Welcome to our new &nbsp;social
+            product </h1>
         <ul>
-            <li class="lead my-3" th:text="#{start.page.welcome.first}">Here you can post stories from your life , your interests , and events.</li>
+            <li class="lead my-3" th:text="#{start.page.welcome.first}">Here you can post stories from your life , your
+                interests , and events.
+            </li>
             <li class="lead my-3" th:text="#{start.page.welcome.second}"> Invite your friends .</li>
             <li class="lead my-3" th:text="#{start.page.welcome.third}"> Write posts. Discuss on different themes.</li>
             <li class="lead my-3" th:text="#{start.page.welcome.fourth}"> Here is a free-word territory</li>
-            <li class="lead mb-0" th:text="#{start.page.continue}"><a href="#" class="text-white font-weight-bold">Continue reading...</a></li>
+            <li class="lead mb-0">
+                <a class="text-white font-weight-bold" href="#"
+                   th:text="#{start.page.continue}">Continue reading...</a>
+            </li>
         </ul>
     </div>
 </div>

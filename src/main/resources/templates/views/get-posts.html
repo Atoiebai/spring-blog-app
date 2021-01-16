@@ -2,26 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title th:text="#{header.posts}"> </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title th:text="#{header.posts}"></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <header th:insert="fragments/header :: header"></header>
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <table>
         <tr>
-            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{get.posts.author}" >Posts author</td>
-            <td class="lead mb-0 font-italic  font-weight-bold" th:text="#{create.post.title.placeholder}">&nbsp; Posts title</td>
+            <td class="font-weight-bold" th:text="#{get.posts.author}">Posts author</td>
+            <td class="font-weight-bold" th:text="#{create.post.title.placeholder}">&nbsp; Posts title</td>
         </tr>
 
         <tr th:each="post : ${posts}">
             <td>
-                <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/post/'+${post.getPostId()}"
+                <a class="font-weight-bold" th:href="'/post/'+${post.getPostId()}"
                    th:text="${post.getBlogUser().getFirstName()} +' '+ ${post.getBlogUser().getLastName()}"></a>
             </td>
 
             <td>
-                <a class="lead mb-0 font-italic  font-weight-bold" th:href="'/post/'+${post.getPostId()}"
+                <a class="font-weight-bold" th:href="'/post/'+${post.getPostId()}"
                    th:text="'&nbsp;' + ${post.getTitle()}"></a>
             </td>
         </tr>

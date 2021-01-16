@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{auth.sign-up}">Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="text-center">
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -11,35 +11,36 @@
         <div class="inner">
             <h4 class="masthead-brand" th:text="#{auth.masterhead}">Cover</h4>
             <nav class="nav nav-masthead justify-content-center">
-                <a class="nav-link active" th:text="#{auth.home.link}" href="#">Home
+                <a class="nav-link active" href="#" th:text="#{auth.home.link}">Home
                 </a>
-                <a class="nav-link" th:text="#{auth.features.link}" href="#">Features</a>
-                <a class="nav-link" th:text="#{auth.contact.link}" href="https://t.me/Sublime_47">Contact</a>
+                <a class="nav-link" href="#" th:text="#{auth.features.link}">Features</a>
+                <a class="nav-link" href="https://t.me/Sublime_47" th:text="#{auth.contact.link}">Contact</a>
             </nav>
         </div>
     </header>
 
     <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-        <main role="main" class="inner cover">
+        <main class="inner cover" role="main">
             <div class="container" style="width: 30%">
-                <form class="" th:method="POST" th:action="@{/register}" th:object="${newUser}">
+                <form class="" th:action="@{/register}" th:method="POST" th:object="${newUser}">
                     <h4 th:text="#{auth.sign-up}">Sign up</h4>
                     <h5 th:text="#{auth.or}">or</h5>
-                    <h4> <a class="form-signin-heading" href="/login" th:text="#{auth.login}">Login </a></h4>
+                    <h4><a class="form-signin-heading" href="/login" th:text="#{auth.login}">Login </a></h4>
                     <p>
                         <label for="email"></label>
                         <br>
-                        <input type="email" th:field="*{email}" id="email" name="email" th:placeholder="#{auth.email.address}"
-                               class="form-control">
-                    <div style="color:darkred" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Email error
+                        <input class="form-control" id="email" name="email" th:field="*{email}"
+                               th:placeholder="#{auth.email.address}"
+                               type="email">
+                    <div style="color:darkred" th:errors="*{email}" th:if="${#fields.hasErrors('email')}"> Email error
                     </div>
 
                     <p>
                         <label for="username"></label>
                         <br>
-                        <input type="text" th:field="*{username}" id="username" name="username"
-                               th:placeholder="#{auth.username.placeholder}" class="form-control">
-                    <div style="color:darkred" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">
+                        <input class="form-control" id="username" name="username" th:field="*{username}"
+                               th:placeholder="#{auth.username.placeholder}" type="text">
+                    <div style="color:darkred" th:errors="*{username}" th:if="${#fields.hasErrors('username')}">
                         FirstName error
                     </div>
 
@@ -49,44 +50,45 @@
                     <div>
 
                     </div>
-                        <label for="genderField"></label>
-                        <br>
-                    <div id="genderField"  th:insert="blocks/selectField :: select (Sex, sex, ${sex})">
+                    <label for="genderField"></label>
+                    <br>
+                    <div id="genderField" th:insert="blocks/selectField :: select (Sex, sex, ${sex})">
 
                     </div>
-                    <div style="color:darkred" th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}">Sex
+                    <div style="color:darkred" th:errors="*{sex}" th:if="${#fields.hasErrors('sex')}">Sex
                     </div>
                     <p>
                     <p>
                         <label for="name"></label>
                         <br>
-                        <input type="text" th:field="*{firstName}" id="name" name="name"
-                               th:placeholder="#{firstname}" class="form-control">
-                    <div style="color:darkred" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                        <input class="form-control" id="name" name="name" th:field="*{firstName}"
+                               th:placeholder="#{firstname}" type="text">
+                    <div style="color:darkred" th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}">
                         FirstName error
                     </div>
 
                     <p>
                         <label for="surname"></label>
                         <br>
-                        <input type="text" th:field="*{lastName}" id="surname" name="surname"
-                               th:placeholder="#{secondname}" class="form-control">
-                    <div style="color:darkred" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">LastName
+                        <input class="form-control" id="surname" name="surname" th:field="*{lastName}"
+                               th:placeholder="#{secondname}" type="text">
+                    <div style="color:darkred" th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}">LastName
                         error
                     </div>
 
                     <p>
                         <label for="password"></label>
                         <br>
-                        <input type="password" th:field="*{password}" id="password" name="password"
-                               th:placeholder="#{auth.password.placeholder}" class="form-control">
+                        <input class="form-control" id="password" name="password" th:field="*{password}"
+                               th:placeholder="#{auth.password.placeholder}" type="password">
                     </p>
                     <p>
                         <label for="passwordAgain"></label>
                         <br>
-                        <input type="password" th:field="*{confirmationPassword}" id="passwordAgain" name="passwordAgain"
-                               th:placeholder="#{password-remember}" class="form-control">
-                    <div style="color:darkred" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password
+                        <input class="form-control" id="passwordAgain" name="passwordAgain"
+                               th:field="*{confirmationPassword}"
+                               th:placeholder="#{password-remember}" type="password">
+                    <div style="color:darkred" th:errors="*{password}" th:if="${#fields.hasErrors('password')}">Password
                         error
                     </div>
                     </p>
@@ -98,7 +100,7 @@
 </div>
 <footer class="mastfoot mt-auto">
     <div class="inner">
-        <span th:text="#{auth.login.created.by}">Project blog created by</span>  <a href="https://github.com/Atoiebai">Atoiebai</a>
+        <span th:text="#{auth.login.created.by}">Project blog created by</span> <a href="https://github.com/Atoiebai">Atoiebai</a>
     </div>
 </footer>
 </body>
