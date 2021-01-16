@@ -15,7 +15,7 @@ public class BlogsController {
 
     public final PostService postService;
 
-    public BlogsController( PostService postService) {
+    public BlogsController(PostService postService) {
         this.postService = postService;
     }
 
@@ -24,7 +24,7 @@ public class BlogsController {
     public String showBlog(Model model) {
         //TODO: main page of blog
         model.addAttribute("listOfPosts", postService.getAllPosts());
-        model.addAttribute("categories" , Category.values());
+        model.addAttribute("categories", Category.values());
         return "views/blog-copy";
     }
 

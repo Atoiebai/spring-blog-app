@@ -7,7 +7,6 @@ import net.atoiebai.blog.model.user.BlogUser;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.Date;
 
 @Entity
 @Table(name = "posts")
@@ -35,16 +34,16 @@ public class Post {
     @Column(name = "category", nullable = false)
     Category category;
 
-    @Column(nullable = false)
-    String slug;
-
-    @Column(nullable = false)
-    Date createdAt = new Date();
-
-    @Column(nullable = false)
-    boolean archived;
-
-    @Column(nullable = false)
-    boolean drafted;
+//    @Column(nullable = false)
+//    String slug;
+//
+//    @Column(nullable = false)
+//    Date createdAt = new Date();
+//
+//    @Column(nullable = false)
+//    boolean archived;
+//
+//    @Column(nullable = false)
+//    boolean drafted;
 
 }

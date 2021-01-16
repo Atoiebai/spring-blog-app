@@ -4,7 +4,6 @@ import net.atoiebai.blog.model.post.Category;
 import net.atoiebai.blog.model.post.Post;
 import net.atoiebai.blog.model.user.BlogUser;
 import net.atoiebai.blog.service.PostService;
-import net.atoiebai.blog.support.PostNotFoundException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -67,9 +66,5 @@ public class PostsController {
 
     }
 
-    @ExceptionHandler
-    public String handle(PostNotFoundException e) {
-     return "views/blog";
-    }
 
 }

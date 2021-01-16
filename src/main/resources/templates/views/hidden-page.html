@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
 <header th:insert="fragments/header :: header"></header>
@@ -19,7 +19,7 @@
 
             <tr th:each="user : ${users}">
                 <td>
-                    <a th:href="'/user/'+${user.getId()}"  th:text="${user.getEmail()}"></a>
+                    <a th:href="'/user/'+${user.getId()}" th:text="${user.getEmail()}"></a>
                 </td>
             </tr>
         </table>
@@ -30,8 +30,8 @@
             </tr>
 
             <tr th:each="post : ${posts}">
-                <td >
-                    <a th:href="'/post/'+${post.getPostId()}"  th:text="${post.getTitle()}"></a>
+                <td>
+                    <a th:href="'/post/'+${post.getPostId()}" th:text="${post.getTitle()}"></a>
                 </td>
             </tr>
         </table>

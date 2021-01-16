@@ -1,12 +1,12 @@
 <div th:fragment="header">
     <nav class="site-header sticky-top py-1">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2" href="/admin-panel" aria-label="Product">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
-                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img"
-                     viewBox="0 0 24 24" focusable="false" data-darkreader-inline-fill=""
-                     data-darkreader-inline-stroke=""
-                     style="--darkreader-inline-fill:none; --darkreader-inline-stroke:currentColor;">
+            <a aria-label="Product" class="py-2" href="/admin-panel">
+                <svg class="d-block mx-auto" data-darkreader-inline-fill="" data-darkreader-inline-stroke="" fill="none" focusable="false"
+                     height="24" role="img" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                     stroke-width="2" style="--darkreader-inline-fill:none; --darkreader-inline-stroke:currentColor;" viewBox="0 0 24 24"
+                     width="24"
+                     xmlns="http://www.w3.org/2000/svg">
                     <title>Product</title>
                     <circle cx="12" cy="12" r="10"></circle>
                     <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path>
@@ -14,11 +14,11 @@
             </a>
             <span><a class="py-2 d-none d-md-inline-block" href="?lang=en" th:text="#{header.change.en}">En</a> |
                 <a class="py-2 d-none d-md-inline-block" href="?lang=ru" th:text="#{header.change.ru}">Ru</a></span>
-            <a class="py-2 d-none d-md-inline-block" th:text="#{header.main}" href="/" >Main</a>
-            <a class="py-2 d-none d-md-inline-block" th:text="#{auth.masterhead}" href="/blog">Blog</a>
-            <a class="py-2 d-none d-md-inline-block" th:text="#{header.authors}" href="/user">All authors</a>
-            <a class="py-2 d-none d-md-inline-block" th:text="#{header.posts}" href="/post">All posts</a>
-            <a class="py-2 d-none d-md-inline-block" th:text="#{header.profile}" href="/user/mine">My profile</a>
+            <a class="py-2 d-none d-md-inline-block" href="/" th:text="#{header.main}">Main</a>
+            <a class="py-2 d-none d-md-inline-block" href="/blog" th:text="#{auth.masterhead}">Blog</a>
+            <a class="py-2 d-none d-md-inline-block" href="/user" th:text="#{header.authors}">All authors</a>
+            <a class="py-2 d-none d-md-inline-block" href="/post" th:text="#{header.posts}">All posts</a>
+            <a class="py-2 d-none d-md-inline-block" href="/user/mine" th:text="#{header.profile}">My profile</a>
             <form action="/logout" method="POST">
                 <button class="btn btn-lg" th:text="#{header.logout.button}" type="submit">Logout</button>
             </form>

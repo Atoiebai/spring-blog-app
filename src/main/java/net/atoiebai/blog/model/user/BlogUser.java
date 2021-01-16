@@ -1,12 +1,16 @@
 package net.atoiebai.blog.model.user;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -34,20 +38,16 @@ public class BlogUser implements UserDetails {
     @Column(name = "email", nullable = false)
     String email;
 
-    @Column(name = "username" , nullable = false)
+    @Column(name = "username", nullable = false)
     @NotEmpty(message = "required field | обязательное поле")
     String username;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "sex" , nullable = false)
+    @Column(name = "sex", nullable = false)
     Sex sex;
 
     @Column(name = "bio")
     String bio;
-
-    @CreationTimestamp
-    @Column(name = "created" , nullable = false)
-    private LocalDateTime created;
 
     @Column(name = "password", nullable = false)
     @NotEmpty(message = "required field | обязательное поле")
@@ -63,6 +63,10 @@ public class BlogUser implements UserDetails {
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status", nullable = false)
     Status status;
+
+    @CreationTimestamp
+    @Column(name = "created", nullable = false)
+    private LocalDateTime created;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
