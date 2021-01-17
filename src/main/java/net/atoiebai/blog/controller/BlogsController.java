@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -24,7 +25,6 @@ public class BlogsController {
     public String showBlog(Model model) {
         //TODO: main page of blog
         model.addAttribute("listOfPosts", postService.getAllPosts());
-        model.addAttribute("categories", Category.values());
         return "views/blog-copy";
     }
 
@@ -32,6 +32,11 @@ public class BlogsController {
     public String showCategories(Model model) {
 
         return "views/category";
+    }
+
+    @ModelAttribute
+    public void listOfCategories(Model model) {
+        model.addAttribute("categories", Category.values());
     }
 
 }

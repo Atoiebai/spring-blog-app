@@ -10,4 +10,5 @@ public interface BlogUsersRepository extends JpaRepository<BlogUser, Long> {
 
     BlogUser findByEmail(String email);
 
+
 }
