@@ -1,6 +1,6 @@
 package net.atoiebai.blog.controller;
 
-import net.atoiebai.blog.model.post.Category;
+import net.atoiebai.blog.service.CategoryService;
 import net.atoiebai.blog.service.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BlogsController {
 
     public final PostService postService;
+    public final CategoryService categoryService;
 
-    public BlogsController(PostService postService) {
+    public BlogsController(PostService postService, CategoryService categoryService) {
         this.postService = postService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping()
@@ -36,7 +38,7 @@ public class BlogsController {
 
     @ModelAttribute
     public void listOfCategories(Model model) {
-        model.addAttribute("categories", Category.values());
+        model.addAttribute("categories", categoryService.getAllCategories() );
     }
 
 }

@@ -12,3 +12,5 @@
 12. Add update date
 13. Return posts by diff parameters
 14. Category page
+15. Make category an entity
+16. Admin-panel only for admins
