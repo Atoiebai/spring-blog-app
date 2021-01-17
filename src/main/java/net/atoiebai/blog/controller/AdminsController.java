@@ -1,11 +1,15 @@
 package net.atoiebai.blog.controller;
 
+import net.atoiebai.blog.model.post.Category;
 import net.atoiebai.blog.service.BlogUsersService;
+import net.atoiebai.blog.service.CategoryService;
 import net.atoiebai.blog.service.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -19,10 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminsController {
     private final BlogUsersService usersService;
     private final PostService postService;
+    private final CategoryService categoryService;
 
-    public AdminsController(BlogUsersService usersService, PostService postService) {
+    public AdminsController(BlogUsersService usersService, PostService postService, CategoryService categoryService) {
         this.usersService = usersService;
         this.postService = postService;
+        this.categoryService = categoryService;
     }
 
     /**
@@ -40,4 +46,15 @@ public class AdminsController {
         return "views/hidden-page";
     }
 
+    @GetMapping("/create-new-category")
+    public String saveCategory(Model model) {
+        model.addAttribute("newCategory" ,new Category());
+        return "views/category-save-form";
+    }
+
+    @PostMapping("/create-new-category")
+    public String saveCategory(@ModelAttribute("newCategory") Category category) {
+        categoryService.saveCategory(category);
+        return "redirect:/blog/category";
+    }
 }

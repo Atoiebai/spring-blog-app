@@ -1,5 +1,6 @@
 package net.atoiebai.blog.service;
 
+import net.atoiebai.blog.model.post.Category;
 import net.atoiebai.blog.model.post.Post;
 import net.atoiebai.blog.repository.PostRepository;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public void savePost(Post post) {
         postRepository.save(post);
+    }
+
+    @Override
+    public List<Post> getAllByCategory(Category category) {
+        return postRepository.findAllByCategory(category);
     }
 
 

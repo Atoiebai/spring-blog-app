@@ -1,31 +1,26 @@
 package net.atoiebai.blog.model.post;
 
-public enum Category {
+import lombok.Getter;
+import lombok.Setter;
 
-    TECH("Technician", "IT, Computers, Technologies"),
-    BEAUTY("Beauty", "Beauty, Fashion"),
-    SPORT("Sport", "Football , Basketball"),
-    GAMES("Games", "Cyberpunk"),
-    OTHER("Other", "Other");
+import javax.persistence.*;
 
-    private final String categoryName;
-    private final String desc;
+@Entity
+@Getter
+@Setter
+public class Category {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
 
-    Category(String name, String desc) {
-        this.categoryName = name;
-        this.desc = desc;
-    }
+    @Column(nullable = false)
+    String title;
 
-    public String getDesc() {
-        return desc;
-    }
+    @Column(nullable = false)
+    String themes;
 
     @Override
     public String toString() {
-        return categoryName;
-    }
-
-    public String getId() {
-        return this.name();
+        return title;
     }
 }

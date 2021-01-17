@@ -7,6 +7,7 @@ import net.atoiebai.blog.model.user.BlogUser;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 @Entity
 @Table(name = "posts")
@@ -30,8 +31,8 @@ public class Post {
     @Column(name = "theme")
     String themeOfPost;
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "category", nullable = false)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "category_id", nullable = false)
     Category category;
 
 //    @Column(nullable = false)

@@ -1,8 +1,8 @@
 package net.atoiebai.blog.controller;
 
-import net.atoiebai.blog.model.post.Category;
 import net.atoiebai.blog.model.post.Post;
 import net.atoiebai.blog.model.user.BlogUser;
+import net.atoiebai.blog.service.CategoryService;
 import net.atoiebai.blog.service.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,17 +16,18 @@ import org.springframework.web.bind.annotation.*;
 public class PostsController {
 
     private final PostService postService;
+    private final CategoryService categoryService;
 
-    public PostsController(PostService postService) {
+    public PostsController(PostService postService, CategoryService categoryService) {
         this.postService = postService;
-
+        this.categoryService = categoryService;
     }
 
     //page to create new Post and send it on the server via POST method under it
     @GetMapping(URLS.createPost)
     public String createPost(Model model) {
         model.addAttribute("newPost", new Post());
-        model.addAttribute("categories", Category.values());
+        model.addAttribute("categories",categoryService.getAllCategories());
         return "views/create-post";
     }
 
