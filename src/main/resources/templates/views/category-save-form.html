@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>CATEGORY BLYAT</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<header th:insert="fragments/header :: header"></header>
+<div class="row justify-content-center align-items-center">
+    <form th:method="POST" th:object="${newCategory}">
+        <label>
+            <input class="form-control" name="categoryTitle" th:field="*{title}"
+                   th:placeholder="#{create.post.title.placeholder}" type="text">
+        </label>
+        <br>
+        <label>
+                    <textarea class="form-control" name="postDetails"
+                              th:field="*{themes}"
+                              th:placeholder="#{create.post.theme.placeholder}"></textarea>
+        </label>
+        <br>
+        <button class="btn btn-success" th:text="#{create.post.add}" type="submit">Add post</button>
+    </form>
+</div>
+<footer th:insert="fragments/footer :: footer"></footer>
+</body>
+</html>

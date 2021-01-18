@@ -1,6 +1,7 @@
 package net.atoiebai.blog.model.user;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
@@ -19,6 +20,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class BlogUser implements UserDetails {
 
     @Id
@@ -26,31 +28,31 @@ public class BlogUser implements UserDetails {
     Long id;
 
     @Column(name = "first_name", nullable = false)
-    @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)")
+//    @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)")
     String firstName;
 
     @Column(name = "last_name", nullable = false)
-    @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)")
+//    @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)")
     String lastName;
 
-    @Email(message = "Invalid email address")
-    @NotEmpty(message = "required field | обязательное поле")
+//    @Email(message = "Invalid email address")
+//    @NotEmpty(message = "required field | обязательное поле")
     @Column(name = "email", nullable = false)
     String email;
 
-    @Column(name = "username", nullable = false)
-    @NotEmpty(message = "required field | обязательное поле")
+//    @Column(name = "username", nullable = false)
+//    @NotEmpty(message = "required field | обязательное поле")
     String username;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "sex", nullable = false)
+//    @Column(name = "sex", nullable = false)
     Sex sex;
 
     @Column(name = "bio")
     String bio;
 
     @Column(name = "password", nullable = false)
-    @NotEmpty(message = "required field | обязательное поле")
+//    @NotEmpty(message = "required field | обязательное поле")
     String password;
 
     @Transient
@@ -65,8 +67,18 @@ public class BlogUser implements UserDetails {
     Status status;
 
     @CreationTimestamp
-    @Column(name = "created", nullable = false)
+    @Column(name = "created", nullable = true)
     private LocalDateTime created;
+
+    public BlogUser(@Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)") String firstName,
+                    @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)") String lastName,
+                    @NotEmpty(message = "required field | обязательное поле") String email,
+                    @NotEmpty(message = "required field | обязательное поле") String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

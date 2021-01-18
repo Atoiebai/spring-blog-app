@@ -1,4 +1,4 @@
-package net.atoiebai.blog.service;
+package net.atoiebai.blog.service.bloguser;
 
 import net.atoiebai.blog.model.user.BlogUser;
 
@@ -14,4 +14,7 @@ public interface BlogUsersService {
 
     void deleteUser(long id);
 
+    void enableBlogUser(String email);
+
+    boolean userExist(String email);
 }

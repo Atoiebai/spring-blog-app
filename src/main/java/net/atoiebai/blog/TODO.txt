@@ -5,9 +5,12 @@
 5. Add register date to users
 6. Add date to posts
 7. Add bio to users
-8. Logging
+8. Logger
 9. Subscribing for users
 10. Add slugs
 11. Add draft and archive
 12. Add update date
 13. Return posts by diff parameters
+14. Category page
+15. Make category an entity
+16. Admin-panel only for admins

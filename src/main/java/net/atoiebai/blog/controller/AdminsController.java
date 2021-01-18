@@ -1,11 +1,16 @@
 package net.atoiebai.blog.controller;
 
-import net.atoiebai.blog.service.BlogUsersService;
-import net.atoiebai.blog.service.PostService;
+import lombok.AllArgsConstructor;
+import net.atoiebai.blog.model.post.Category;
+import net.atoiebai.blog.service.bloguser.BlogUsersService;
+import net.atoiebai.blog.service.category.CategoryService;
+import net.atoiebai.blog.service.post.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -16,14 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(URLS.adminPage)
+@AllArgsConstructor
 public class AdminsController {
     private final BlogUsersService usersService;
     private final PostService postService;
-
-    public AdminsController(BlogUsersService usersService, PostService postService) {
-        this.usersService = usersService;
-        this.postService = postService;
-    }
+    private final CategoryService categoryService;
 
     /**
      * A page which available only for users with special authorities
@@ -40,4 +42,15 @@ public class AdminsController {
         return "views/hidden-page";
     }
 
+    @GetMapping("/create-new-category")
+    public String saveCategory(Model model) {
+        model.addAttribute("newCategory" ,new Category());
+        return "views/category-save-form";
+    }
+
+    @PostMapping("/create-new-category")
+    public String saveCategory(@ModelAttribute("newCategory") Category category) {
+        categoryService.saveCategory(category);
+        return "redirect:/blog/category";
+    }
 }

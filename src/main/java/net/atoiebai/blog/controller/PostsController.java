@@ -1,9 +1,10 @@
 package net.atoiebai.blog.controller;
 
-import net.atoiebai.blog.model.post.Category;
+import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.post.Post;
 import net.atoiebai.blog.model.user.BlogUser;
-import net.atoiebai.blog.service.PostService;
+import net.atoiebai.blog.service.category.CategoryService;
+import net.atoiebai.blog.service.post.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,20 +14,17 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(URLS.postsPage)
+@AllArgsConstructor
 public class PostsController {
 
     private final PostService postService;
-
-    public PostsController(PostService postService) {
-        this.postService = postService;
-
-    }
+    private final CategoryService categoryService;
 
     //page to create new Post and send it on the server via POST method under it
     @GetMapping(URLS.createPost)
     public String createPost(Model model) {
         model.addAttribute("newPost", new Post());
-        model.addAttribute("categories", Category.values());
+        model.addAttribute("categories",categoryService.getAllCategories());
         return "views/create-post";
     }
 
@@ -65,6 +63,5 @@ public class PostsController {
         return "views/get-post";
 
     }
-
 
 }
