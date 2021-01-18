@@ -21,6 +21,6 @@ public interface ConfirmationTokenRepository
     @Modifying
     @Query("UPDATE ConfirmationToken c SET c.confirmedAt = ?2 WHERE c.token = ?1")
     void updateConfirmedAt(String token, LocalDateTime confirmedAt);
-    
+
 }
 

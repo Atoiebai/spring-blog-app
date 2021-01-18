@@ -3,12 +3,18 @@ package net.atoiebai.blog.controller;
 import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.user.BlogUser;
 import net.atoiebai.blog.model.user.Sex;
-//import net.atoiebai.blog.registration.RegistrationRequest;
-import net.atoiebai.blog.service.registration.RegistrationService;
 import net.atoiebai.blog.service.bloguser.BlogUsersService;
+import net.atoiebai.blog.service.registration.RegistrationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -32,34 +38,30 @@ public class AuthorizationController {
         return "auth/register-page";
     }
 
-    //creates new user based on entered data and redirects to login page
-//    @PostMapping(URLS.registerUser)
-//    public String getNewUser(
-//            @ModelAttribute("newUser")
-//            @Valid BlogUser user,
-//            BindingResult bindingResult) {
-//
-//        if (!user.checkPassword()) {
-//            bindingResult.addError(new FieldError("user", "password", "passwords are not match | пароли не совпадают"));
-//        }
-//
-//        if (bindingResult.hasErrors()) {
-//            return "auth/register-page";
-//        }
-//
-//        blogUsersService.saveUser(user);
-//
-//        return "auth/login";
-//    }
-
     @PostMapping(URLS.registerUser)
-    public String register(@ModelAttribute("newUser")  BlogUser user) {
-         registrationService.register(user);
-         return "auth/login";
+    public String register(@ModelAttribute("newUser")
+                           @Valid BlogUser user,
+                           BindingResult bindingResult) {
+
+        if (blogUsersService.userExist(user.getEmail())) {
+            bindingResult.addError(new FieldError("user", "email", "email already in use | почта уже используется"));
+        }
+
+        if (!user.checkPassword()) {
+            bindingResult.addError(new FieldError("user", "password", "passwords are not match | пароли не совпадают"));
+        }
+
+        if (bindingResult.hasErrors()) {
+            return "auth/register-page";
+        }
+
+        registrationService.register(user);
+        return "auth/login";
+
     }
 
     @GetMapping(path = "/confirm")
-    public String confirm(@RequestParam(name = "token" , required = false) String token) {
+    public String confirm(@RequestParam(name = "token", required = false) String token) {
         return registrationService.confirmToken(token);
     }
 }

@@ -4,8 +4,6 @@ package net.atoiebai.blog.service.bloguser;
 import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.user.BlogUser;
 import net.atoiebai.blog.repository.BlogUsersRepository;
-import net.atoiebai.blog.service.registration.ConfirmationTokenService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +13,6 @@ import java.util.List;
 public class BlogUsersServiceImpl implements BlogUsersService {
 
     private final BlogUsersRepository blogUsersRepository;
-    private final PasswordEncoder bCryptPasswordEncoder;
-    private final ConfirmationTokenService confirmationTokenService;
 
     @Override
     public List<BlogUser> getAllUsers() {
@@ -39,8 +35,13 @@ public class BlogUsersServiceImpl implements BlogUsersService {
     }
 
     @Override
-    public int enableBlogUser(String email) {
-        return blogUsersRepository.enableBlogUser(email);
+    public void enableBlogUser(String email) {
+        blogUsersRepository.enableBlogUser(email);
+    }
+
+    @Override
+    public boolean userExist(String email) {
+        return blogUsersRepository.findByEmail(email).isPresent();
     }
 
 }
