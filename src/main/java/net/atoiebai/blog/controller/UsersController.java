@@ -1,5 +1,6 @@
 package net.atoiebai.blog.controller;
 
+import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.user.BlogUser;
 import net.atoiebai.blog.service.BlogUsersService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,13 +20,10 @@ import javax.persistence.EntityNotFoundException;
 
 @Controller
 @RequestMapping(URLS.usersPage)
+@AllArgsConstructor
 public class UsersController {
 
     private final BlogUsersService usersService;
-
-    public UsersController(BlogUsersService usersService) {
-        this.usersService = usersService;
-    }
 
     @GetMapping()
     public String getAllUsers(Model model) {

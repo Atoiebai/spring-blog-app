@@ -14,4 +14,5 @@ public interface BlogUsersService {
 
     void deleteUser(long id);
 
+    int enableBlogUser(String email);
 }

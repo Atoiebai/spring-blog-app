@@ -1,5 +1,6 @@
 package net.atoiebai.blog.controller;
 
+import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.user.BlogUser;
 import net.atoiebai.blog.model.user.Sex;
 import net.atoiebai.blog.repository.BlogUsersRepository;
@@ -16,15 +17,11 @@ import javax.validation.Valid;
 
 
 @Controller
+@AllArgsConstructor
 public class AuthorizationController {
 
     private final BlogUsersService blogUsersService;
     private final BlogUsersRepository blogUsersRepository;
-
-    public AuthorizationController(BlogUsersService blogUsersService, BlogUsersRepository blogUsersRepository) {
-        this.blogUsersService = blogUsersService;
-        this.blogUsersRepository = blogUsersRepository;
-    }
 
     //return s login-form
     @GetMapping(URLS.login)
@@ -46,10 +43,6 @@ public class AuthorizationController {
             @ModelAttribute("newUser")
             @Valid BlogUser user,
             BindingResult bindingResult) {
-
-        if (blogUsersRepository.findByEmail(user.getEmail()) != null) {
-            bindingResult.addError(new FieldError("user", "email", "email already in use | почта уже используется"));
-        }
 
         if (!user.checkPassword()) {
             bindingResult.addError(new FieldError("user", "password", "passwords are not match | пароли не совпадают"));
