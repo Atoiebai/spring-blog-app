@@ -1,4 +1,4 @@
-package net.atoiebai.blog.registration.token;
+package net.atoiebai.blog.model.token;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,8 @@
-package net.atoiebai.blog.registration.token;
+package net.atoiebai.blog.service.registration;
 
 import lombok.AllArgsConstructor;
+import net.atoiebai.blog.model.token.ConfirmationToken;
+import net.atoiebai.blog.repository.ConfirmationTokenRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

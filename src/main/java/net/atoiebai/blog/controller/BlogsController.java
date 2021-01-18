@@ -1,8 +1,8 @@
 package net.atoiebai.blog.controller;
 
 import lombok.AllArgsConstructor;
-import net.atoiebai.blog.service.CategoryService;
-import net.atoiebai.blog.service.PostService;
+import net.atoiebai.blog.service.category.CategoryService;
+import net.atoiebai.blog.service.post.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

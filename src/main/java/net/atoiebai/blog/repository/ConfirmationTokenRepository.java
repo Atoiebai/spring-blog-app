@@ -1,5 +1,6 @@
-package net.atoiebai.blog.registration.token;
+package net.atoiebai.blog.repository;
 
+import net.atoiebai.blog.model.token.ConfirmationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -20,5 +21,6 @@ public interface ConfirmationTokenRepository
     @Modifying
     @Query("UPDATE ConfirmationToken c SET c.confirmedAt = ?2 WHERE c.token = ?1")
     void updateConfirmedAt(String token, LocalDateTime confirmedAt);
+    
 }
 

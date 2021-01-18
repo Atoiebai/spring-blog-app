@@ -1,4 +1,4 @@
-package net.atoiebai.blog.service;
+package net.atoiebai.blog.service.bloguser;
 
 import net.atoiebai.blog.model.user.BlogUser;
 

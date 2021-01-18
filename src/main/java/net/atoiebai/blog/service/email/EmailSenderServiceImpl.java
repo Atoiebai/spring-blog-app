@@ -1,4 +1,4 @@
-package net.atoiebai.blog.email;
+package net.atoiebai.blog.service.email;
 
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -14,10 +14,10 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 @AllArgsConstructor
-public class EmailService implements EmailSender {
+public class EmailSenderServiceImpl implements EmailSenderService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(
-            EmailService.class
+            EmailSenderServiceImpl.class
     );
     private final JavaMailSender mailSender;
 

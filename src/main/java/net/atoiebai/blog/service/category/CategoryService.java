@@ -1,4 +1,4 @@
-package net.atoiebai.blog.service;
+package net.atoiebai.blog.service.category;
 
 import net.atoiebai.blog.model.post.Category;
 import net.atoiebai.blog.model.post.Post;

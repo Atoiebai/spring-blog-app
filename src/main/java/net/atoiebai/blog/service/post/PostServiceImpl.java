@@ -1,8 +1,9 @@
-package net.atoiebai.blog.service;
+package net.atoiebai.blog.service.post;
 
 import net.atoiebai.blog.model.post.Category;
 import net.atoiebai.blog.model.post.Post;
 import net.atoiebai.blog.repository.PostRepository;
+import net.atoiebai.blog.service.post.PostService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

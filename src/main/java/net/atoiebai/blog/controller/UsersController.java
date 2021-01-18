@@ -2,7 +2,7 @@ package net.atoiebai.blog.controller;
 
 import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.user.BlogUser;
-import net.atoiebai.blog.service.BlogUsersService;
+import net.atoiebai.blog.service.bloguser.BlogUsersService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;

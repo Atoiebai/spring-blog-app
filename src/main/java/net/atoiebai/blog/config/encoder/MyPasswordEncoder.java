@@ -1,4 +1,4 @@
-package net.atoiebai.blog.encoder;
+package net.atoiebai.blog.config.encoder;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

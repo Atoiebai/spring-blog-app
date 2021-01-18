@@ -1,12 +1,12 @@
-package net.atoiebai.blog.registration;
+package net.atoiebai.blog.service.registration;
 
 import lombok.AllArgsConstructor;
-import net.atoiebai.blog.email.EmailSender;
+import net.atoiebai.blog.service.bloguser.BlogUsersService;
+import net.atoiebai.blog.service.email.EmailSenderService;
 import net.atoiebai.blog.model.user.BlogUser;
-import net.atoiebai.blog.registration.token.ConfirmationToken;
-import net.atoiebai.blog.registration.token.ConfirmationTokenService;
+import net.atoiebai.blog.model.token.ConfirmationToken;
 import net.atoiebai.blog.security.UserDetailsServiceImpl;
-import net.atoiebai.blog.service.BlogUsersService;
+import net.atoiebai.blog.service.registration.ConfirmationTokenService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,21 +20,14 @@ public class RegistrationService {
     private final UserDetailsServiceImpl userDetailsService;
     private final ConfirmationTokenService confirmationTokenService;
     private final BlogUsersService blogUsersService;
-    private final EmailSender emailSender;
+    private final EmailSenderService emailSenderService;
 
 
-    public String register(RegistrationRequest request) {
-        String token = userDetailsService.signUpUser(new BlogUser(
-                request.getFirstName() ,
-                request.getLastName() ,
-                request.getEmail() ,
-                request.getPassword()
-        ));
-        String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
-        emailSender.send(request.getEmail() ,
-                buildEmail(request.getFirstName() , link));
-
-        return token;
+    public void register(BlogUser user) {
+        String token = userDetailsService.signUpUser(user);
+        String link = "http://localhost:8080/confirm?token=" + token;
+        emailSenderService.send(user.getEmail() ,
+                buildEmail(user.getFirstName() , link));
     }
 
     @Transactional
