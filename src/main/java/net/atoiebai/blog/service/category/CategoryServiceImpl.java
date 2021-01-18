@@ -1,13 +1,14 @@
-package net.atoiebai.blog.service;
+package net.atoiebai.blog.service.category;
 
 import net.atoiebai.blog.model.post.Category;
 import net.atoiebai.blog.repository.CategoryRepository;
+import net.atoiebai.blog.service.category.CategoryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategoryServiceImpl  implements CategoryService{
+public class CategoryServiceImpl  implements CategoryService {
       private final CategoryRepository categoryRepository;
 
     public CategoryServiceImpl(CategoryRepository categoryRepository) {

@@ -1,9 +1,10 @@
 package net.atoiebai.blog.controller;
 
+import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.post.Category;
-import net.atoiebai.blog.service.BlogUsersService;
-import net.atoiebai.blog.service.CategoryService;
-import net.atoiebai.blog.service.PostService;
+import net.atoiebai.blog.service.bloguser.BlogUsersService;
+import net.atoiebai.blog.service.category.CategoryService;
+import net.atoiebai.blog.service.post.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(URLS.adminPage)
+@AllArgsConstructor
 public class AdminsController {
     private final BlogUsersService usersService;
     private final PostService postService;
     private final CategoryService categoryService;
-
-    public AdminsController(BlogUsersService usersService, PostService postService, CategoryService categoryService) {
-        this.usersService = usersService;
-        this.postService = postService;
-        this.categoryService = categoryService;
-    }
 
     /**
      * A page which available only for users with special authorities

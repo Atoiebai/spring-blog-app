@@ -1,9 +1,10 @@
 package net.atoiebai.blog.controller;
 
+import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.user.BlogUser;
 import net.atoiebai.blog.model.user.Sex;
-import net.atoiebai.blog.repository.BlogUsersRepository;
-import net.atoiebai.blog.service.BlogUsersService;
+import net.atoiebai.blog.service.bloguser.BlogUsersService;
+import net.atoiebai.blog.service.registration.RegistrationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,20 +12,17 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
 
 @Controller
+@AllArgsConstructor
 public class AuthorizationController {
 
+    private final RegistrationService registrationService;
     private final BlogUsersService blogUsersService;
-    private final BlogUsersRepository blogUsersRepository;
-
-    public AuthorizationController(BlogUsersService blogUsersService, BlogUsersRepository blogUsersRepository) {
-        this.blogUsersService = blogUsersService;
-        this.blogUsersRepository = blogUsersRepository;
-    }
 
     //return s login-form
     @GetMapping(URLS.login)
@@ -40,14 +38,12 @@ public class AuthorizationController {
         return "auth/register-page";
     }
 
-    //creates new user based on entered data and redirects to login page
     @PostMapping(URLS.registerUser)
-    public String getNewUser(
-            @ModelAttribute("newUser")
-            @Valid BlogUser user,
-            BindingResult bindingResult) {
+    public String register(@ModelAttribute("newUser")
+                           @Valid BlogUser user,
+                           BindingResult bindingResult) {
 
-        if (blogUsersRepository.findByEmail(user.getEmail()) != null) {
+        if (blogUsersService.userExist(user.getEmail())) {
             bindingResult.addError(new FieldError("user", "email", "email already in use | почта уже используется"));
         }
 
@@ -59,8 +55,13 @@ public class AuthorizationController {
             return "auth/register-page";
         }
 
-        blogUsersService.saveUser(user);
-
+        registrationService.register(user);
         return "auth/login";
+
+    }
+
+    @GetMapping(path = "/confirm")
+    public String confirm(@RequestParam(name = "token", required = false) String token) {
+        return registrationService.confirmToken(token);
     }
 }

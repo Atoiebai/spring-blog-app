@@ -1,7 +1,8 @@
 package net.atoiebai.blog.controller;
 
-import net.atoiebai.blog.service.CategoryService;
-import net.atoiebai.blog.service.PostService;
+import lombok.AllArgsConstructor;
+import net.atoiebai.blog.service.category.CategoryService;
+import net.atoiebai.blog.service.post.PostService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(URLS.blogPage)
+@AllArgsConstructor
 public class BlogsController {
 
     public final PostService postService;
     public final CategoryService categoryService;
-
-    public BlogsController(PostService postService, CategoryService categoryService) {
-        this.postService = postService;
-        this.categoryService = categoryService;
-    }
 
     @GetMapping()
     @PreAuthorize("hasAuthority('can:read')") //access only for authorized users
