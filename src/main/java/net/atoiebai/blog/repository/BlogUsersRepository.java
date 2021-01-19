@@ -18,7 +18,7 @@ public interface BlogUsersRepository extends JpaRepository<BlogUser, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE BlogUser a " +
-            "SET a.status = 'ACTIVE' WHERE a.email = ?1")
+            "SET a.status = 'ACTIVE' , a.role= 'USER' WHERE a.email = ?1")
     void enableBlogUser(String email);
 
 }

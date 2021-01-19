@@ -22,20 +22,18 @@ public class BlogsController {
     @GetMapping()
     @PreAuthorize("hasAuthority('can:read')") //access only for authorized users
     public String showBlog(Model model) {
-        //TODO: main page of blog
         model.addAttribute("listOfPosts", postService.getAllPosts());
         return "views/blog-copy";
     }
 
     @GetMapping(URLS.categoryPage)
     public String showCategories(Model model) {
-
         return "views/category";
     }
 
     @ModelAttribute
     public void listOfCategories(Model model) {
-        model.addAttribute("categories", categoryService.getAllCategories() );
+        model.addAttribute("categories", categoryService.getAllCategories());
     }
 
 }

@@ -1,12 +1,11 @@
 package net.atoiebai.blog.service.registration;
 
 import lombok.AllArgsConstructor;
+import net.atoiebai.blog.model.token.ConfirmationToken;
+import net.atoiebai.blog.model.user.BlogUser;
+import net.atoiebai.blog.security.UserDetailsServiceImpl;
 import net.atoiebai.blog.service.bloguser.BlogUsersService;
 import net.atoiebai.blog.service.email.EmailSenderService;
-import net.atoiebai.blog.model.user.BlogUser;
-import net.atoiebai.blog.model.token.ConfirmationToken;
-import net.atoiebai.blog.security.UserDetailsServiceImpl;
-import net.atoiebai.blog.service.registration.ConfirmationTokenService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,8 +25,8 @@ public class RegistrationService {
     public void register(BlogUser user) {
         String token = userDetailsService.signUpUser(user);
         String link = "http://localhost:8080/confirm?token=" + token;
-        emailSenderService.send(user.getEmail() ,
-                buildEmail(user.getFirstName() , link));
+        emailSenderService.send(user.getEmail(),
+                buildEmail(user.getFirstName(), link));
     }
 
     @Transactional
@@ -50,6 +49,7 @@ public class RegistrationService {
         confirmationTokenService.setConfirmedAt(token);
         blogUsersService.enableBlogUser(confirmationToken.getUser().getEmail());
         return "confirmed";
+
     }
 
     private String buildEmail(String name, String link) {

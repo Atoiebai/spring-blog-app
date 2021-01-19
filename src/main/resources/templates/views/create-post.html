@@ -29,11 +29,15 @@
                     <input class="form-control" name="blogTitle" th:field="*{title}"
                            th:placeholder="#{create.post.title.placeholder}" type="text">
                 </label>
+                <label>
+                    <input class="form-control" name="blogTitle" th:field="*{theme}"
+                           th:placeholder="#{create.post.theme.placeholder}" type="text">
+                </label>
                 <br>
                 <label>
                     <textarea class="form-control" name="postDetails"
-                              th:field="*{themeOfPost}"
-                              th:placeholder="#{create.post.theme.placeholder}"></textarea>
+                              th:field="*{body}"
+                              th:placeholder="#{create.post.body.placeholder}"></textarea>
                 </label>
                 <br>
                 <button class="btn btn-success" th:text="#{create.post.add}" type="submit">Add post</button>
