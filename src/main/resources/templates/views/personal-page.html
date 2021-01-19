@@ -11,23 +11,21 @@
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div>
 
-        <h5 th:text="#{current.email}+ ': ' + ${currentUser.getEmail()}"></h5>
+        <p th:text="#{current.email}+ ': ' + ${currentUser.getEmail()}"></p>
 
-        <h5 th:text="#{get.users.name} +': '+ ${currentUser.getFirstName()}"></h5>
+        <p th:text="#{get.users.name} +': '+ ${currentUser.getFirstName()} + ' ' + ${currentUser.getLastName()}"></p>
 
-        <h5 th:text="${currentUser.getLastName()}"></h5>
+        <p th:if=" ${currentUser.getBio()}!=null" th:text="#{bio}+ ': ' + ${currentUser.getBio()}"></p>
 
-        <h5 th:if=" ${currentUser.getBio()}!=null" th:text="#{bio}+ ': ' + ${currentUser.getBio()}"></h5>
+        <p th:if=" ${currentUser.getBio()}==null" th:text="#{your.thoughts} + ': ' + #{add.bio}"></p>
 
-        <h5 th:if=" ${currentUser.getBio()}==null" th:text="#{your.thoughts} + ': ' + #{add.bio}"></h5>
+        <p><a href="#" th:text="#{add}"></a></p>
 
-        <h5><a href="#" th:text="#{add}"></a></h5>
+        <p><a class="py-2 d-none d-md-inline-block" href="#" th:text="#{update.profile}"></a></p>
 
-        <h5><a href="#" th:text="#{update.profile}"></a></h5>
-
-        <h5><a class="py-2 d-none d-md-inline-block" href="/post/create"
+        <p><a class="py-2 d-none d-md-inline-block" href="/post/create"
                th:text="#{header.create-post}">Create new post</a>
-        </h5>
+        </p>
 
     </div>
 </div>
