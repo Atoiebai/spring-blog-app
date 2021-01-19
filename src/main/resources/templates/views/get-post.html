@@ -11,11 +11,11 @@
     <div>
         <p class="font-weight-bold" th:text="#{get.post.info}">About post</p>
         <br>
-        <p class="font-weight-bold" th:text="#{get.post.id} + ${post.getPostId()}"></p>
+        <p class="font-weight-bold" th:text="#{get.post.id}+ ': ' + ${post.getPostId()}"></p>
         <br>
-        <p class="font-weight-bold" th:text="#{get.post.theme} + ${post.getTheme()} + '... '"></p>
+        <p class="font-weight-bold" th:text="#{get.post.theme}+ ': ' + ${post.getTheme()} + '... '"></p>
         <br>
-        <p class="font-weight-bold" th:text="#{get.post.views}"></p>
+        <p class="font-weight-bold" th:text="#{get.post.views} + ': ' "></p>
     </div>
 </div>
 <footer th:insert="fragments/footer :: footer"></footer>
