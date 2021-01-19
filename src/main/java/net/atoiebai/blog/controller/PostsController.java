@@ -35,7 +35,7 @@ public class PostsController {
         if (user == null) throw new NullPointerException("User is null sorry");
         post.setBlogUser(user);
         postService.savePost(post);
-        return "views/blog";
+        return "redirect:/blog";
     }
 
 

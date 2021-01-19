@@ -6,6 +6,7 @@ import net.atoiebai.blog.repository.PostRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -32,6 +33,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void savePost(Post post) {
+        post.setSlug(post.getTheme().replaceAll("\\s", "-").toLowerCase(Locale.ROOT));
         postRepository.save(post);
     }
 

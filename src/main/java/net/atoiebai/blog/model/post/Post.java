@@ -8,6 +8,7 @@ import net.atoiebai.blog.model.user.BlogUser;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity
 @Table(name = "posts")
