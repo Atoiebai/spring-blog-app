@@ -6,6 +6,7 @@ import java.util.List;
 
 
 public interface BlogUsersService {
+
     List<BlogUser> getAllUsers();
 
     void saveUser(BlogUser blogUser);
@@ -17,4 +18,5 @@ public interface BlogUsersService {
     void enableBlogUser(String email);
 
     boolean userExist(String email);
+
 }

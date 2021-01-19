@@ -10,21 +10,24 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import java.util.Locale;
 
+
 @Configuration
 public class LocaleConfig implements WebMvcConfigurer {
 
     @Bean
     public LocaleResolver localeResolver() {
         CookieLocaleResolver localeResolver = new CookieLocaleResolver();
+        //new locale for russian users
         Locale locale = new Locale("ru");
         localeResolver.setDefaultLocale(Locale.ENGLISH);
         return localeResolver;
+
     }
 
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-        // Defaults to "locale" if not set
+
         localeChangeInterceptor.setParamName("lang");
         return localeChangeInterceptor;
     }

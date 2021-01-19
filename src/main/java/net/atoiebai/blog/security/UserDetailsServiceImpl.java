@@ -1,12 +1,12 @@
 package net.atoiebai.blog.security;
 
 import lombok.AllArgsConstructor;
+import net.atoiebai.blog.model.token.ConfirmationToken;
 import net.atoiebai.blog.model.user.BlogUser;
 import net.atoiebai.blog.model.user.Role;
 import net.atoiebai.blog.model.user.Status;
-import net.atoiebai.blog.model.token.ConfirmationToken;
-import net.atoiebai.blog.service.registration.ConfirmationTokenService;
 import net.atoiebai.blog.repository.BlogUsersRepository;
+import net.atoiebai.blog.service.registration.ConfirmationTokenService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,7 +26,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final PasswordEncoder bCryptPasswordEncoder;
 
 
-
     /**
      * @param identifier needs to find user in our Repository
      * @return converted into SecurityUser blogUser
@@ -44,8 +43,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public String signUpUser(BlogUser user) {
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRole(Role.USER);
-        user.setStatus(Status.ACTIVE);
+        user.setRole(Role.GUEST);
+        user.setStatus(Status.UNCONFIRMED);
 
         blogUsersRepository.save(user);
 

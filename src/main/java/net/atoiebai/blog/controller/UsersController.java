@@ -42,12 +42,12 @@ public class UsersController {
     @GetMapping("/{id}")
     public String getUser(Model model,
                           @PathVariable(value = "id") long id) {
+
         try {
             BlogUser blogUser = usersService.getUser(id);
             model.addAttribute("user", blogUser);
-
         } catch (EntityNotFoundException e) {
-            model.addAttribute("message", "No user with such id. Try to use another one");
+            //TODO: logic for exception
         }
 
         return "views/get-user";

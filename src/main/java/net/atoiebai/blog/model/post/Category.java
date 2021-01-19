@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
@@ -23,4 +24,5 @@ public class Category {
     public String toString() {
         return title;
     }
+
 }

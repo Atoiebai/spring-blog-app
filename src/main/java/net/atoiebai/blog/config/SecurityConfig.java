@@ -1,8 +1,8 @@
 package net.atoiebai.blog.config;
 
 import lombok.AllArgsConstructor;
-import net.atoiebai.blog.controller.URLS;
 import net.atoiebai.blog.config.encoder.MyPasswordEncoder;
+import net.atoiebai.blog.controller.URLS;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -32,8 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers(URLS.registerUser)
-                .permitAll()
-                .antMatchers("/api/v*/registration/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

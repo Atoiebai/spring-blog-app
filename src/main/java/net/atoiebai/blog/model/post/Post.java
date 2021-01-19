@@ -15,6 +15,7 @@ import java.util.Date;
 @Setter
 @ToString
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -24,27 +25,30 @@ public class Post {
     @JoinColumn(name = "user_id", nullable = false)
     BlogUser blogUser;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     @NotEmpty
     String title;
 
-    @Column(name = "theme")
-    String themeOfPost;
+    @Column(name = "theme", nullable = false)
+    String theme;
+
+    @Column(name = "body", nullable = false)
+    String body;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "category_id", nullable = false)
     Category category;
 
-//    @Column(nullable = false)
-//    String slug;
-//
-//    @Column(nullable = false)
-//    Date createdAt = new Date();
-//
-//    @Column(nullable = false)
-//    boolean archived;
-//
-//    @Column(nullable = false)
-//    boolean drafted;
+    @Column(nullable = false)
+    String slug;
+
+    @Column(nullable = false)
+    Date createdAt = new Date();
+
+    @Column(nullable = false)
+    boolean archived = false;
+
+    @Column(nullable = false)
+    boolean drafted = true;
 
 }

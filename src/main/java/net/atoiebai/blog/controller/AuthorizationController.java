@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
-
 @Controller
 @AllArgsConstructor
 public class AuthorizationController {
@@ -24,7 +23,7 @@ public class AuthorizationController {
     private final RegistrationService registrationService;
     private final BlogUsersService blogUsersService;
 
-    //return s login-form
+    //returns login-form
     @GetMapping(URLS.login)
     public String getLoginPage() {
         return "auth/login";
@@ -37,6 +36,11 @@ public class AuthorizationController {
         model.addAttribute("sex", Sex.values());
         return "auth/register-page";
     }
+
+    /*
+     checks if all attributes is correct ,
+     and creating User with minimal authorities and role GUEST
+     */
 
     @PostMapping(URLS.registerUser)
     public String register(@ModelAttribute("newUser")
@@ -60,8 +64,10 @@ public class AuthorizationController {
 
     }
 
+    // after confirming email user gets base-permissions and role USER
     @GetMapping(path = "/confirm")
-    public String confirm(@RequestParam(name = "token", required = false) String token) {
-        return registrationService.confirmToken(token);
+    public String confirm(Model model, @RequestParam(name = "token", required = false) String token) {
+        model.addAttribute("confirmToken", registrationService.confirmToken(token));
+        return "views/confirm";
     }
 }

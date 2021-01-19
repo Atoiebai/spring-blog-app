@@ -3,7 +3,10 @@ package net.atoiebai.blog.service.bloguser;
 
 import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.user.BlogUser;
+import net.atoiebai.blog.model.user.Role;
+import net.atoiebai.blog.model.user.Status;
 import net.atoiebai.blog.repository.BlogUsersRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,5 +46,6 @@ public class BlogUsersServiceImpl implements BlogUsersService {
     public boolean userExist(String email) {
         return blogUsersRepository.findByEmail(email).isPresent();
     }
+
 
 }

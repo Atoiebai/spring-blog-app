@@ -8,9 +8,11 @@ import net.atoiebai.blog.model.user.BlogUser;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
+@SuppressWarnings("all")
 @Entity
 public class ConfirmationToken {
 
