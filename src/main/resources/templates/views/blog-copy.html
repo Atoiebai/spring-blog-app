@@ -21,9 +21,9 @@
     <div class="row">
         <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" id="sidebarMenu">
             <div class="sidebar-sticky pt-3">
-                <p class="nav-item"><a class="nav-link" href="/blog/category" th:text="#{category}"></a></p>
+                <p class="nav-item"><a class="nav-link" href="/blog/categories" th:text="#{category}"></a></p>
                 <ul class="nav flex-column" th:each="category : ${categories}">
-                    <li class="nav-item"><a class="nav-link" th:href="'/category/'+${category}"
+                    <li class="nav-item"><a class="nav-link" th:href="${category.getSlug()}"
                                             th:text="${category.getTitle()}"></a></li>
                 </ul>
 
@@ -63,11 +63,11 @@
 
                     <tr th:each="post : ${listOfPosts}">
                         <td>
-                            <a class="font-weight-bold" th:href="'/user/'+${post.getPostId()}"
+                            <a class="font-weight-bold" th:href="'/users/'+${post.getBlogUser().getSlug()}"
                                th:text="${post.getBlogUser().getFirstName()}"></a>
                         </td>
                         <td>
-                            <a class="font-weight-bold" th:href="'/post/'+${post.getPostId()}"
+                            <a class="font-weight-bold" th:href="'/posts/'+${post.getPostId()}"
                                th:text="${post.getTitle()}"></a>
                         </td>
                     </tr>

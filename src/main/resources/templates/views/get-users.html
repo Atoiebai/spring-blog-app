@@ -16,11 +16,11 @@
 
         <tr th:each="blogUser : ${users}">
             <td>
-                <a class="font-weight-bold" th:href="'/users/'+${blogUser.getId()}"
+                <a class="font-weight-bold" th:href="'/users/'+${blogUser.getSlug()}"
                    th:text="${blogUser.getUsername()}"></a>
             </td>
             <td>
-                <a class="font-weight-bold" th:href="'/users/'+${blogUser.getId()}"
+                <a class="font-weight-bold" th:href="'/users/'+${blogUser.getSlug()}"
                    th:text="${blogUser.getFirstName()}"></a>
             </td>
 

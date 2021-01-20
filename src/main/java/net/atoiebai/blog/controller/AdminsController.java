@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Locale;
+
 /**
  * Controller only for  functions which available for admins
  * The main purpose of providing access to pages for managing the blog and its users.
@@ -49,7 +51,7 @@ public class AdminsController {
 
     @PostMapping("/create-new-category")
     public String saveCategory(@ModelAttribute("newCategory") Category category) {
-        category.setSlug(category.getTitle());
+        category.setSlug(category.getTitle().replaceAll("\\s", "-").toLowerCase(Locale.ROOT));
         categoryService.saveCategory(category);
         return "redirect:/blog/categories";
     }

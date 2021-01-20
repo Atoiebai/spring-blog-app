@@ -51,6 +51,9 @@ public class BlogUser implements UserDetails {
     @Column(name = "bio")
     String bio;
 
+    @Column(nullable = false)
+    String slug;
+
     @Column(name = "password", nullable = false)
     @NotEmpty(message = "required field | обязательное поле")
     String password;

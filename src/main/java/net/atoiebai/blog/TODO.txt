@@ -15,3 +15,4 @@
 15. Make category an entity
 16. Admin-panel only for admins
 17. Create permissions for each page
+18. Add slugs for each entity
