@@ -8,13 +8,13 @@
 </head>
 <body>
 <header th:insert="fragments/header :: header"></header>
-
+    <h4><a href="/create-new-category" th:text="#{create.category}"></a></h4>
 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
 
     <div class="container d-flex flex-column flex-md-row justify-content-between">
         <table>
             <tr>
-                <td>All Users</td>
+                <td th:text="#{header.authors}"></td>
             </tr>
 
             <tr th:each="user : ${users}">
@@ -26,7 +26,7 @@
 
         <table>
             <tr>
-                <td>All Posts</td>
+                <td th:text="#{header.posts}"></td>
             </tr>
 
             <tr th:each="post : ${posts}">

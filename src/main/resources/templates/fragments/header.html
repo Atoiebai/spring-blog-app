@@ -16,9 +16,9 @@
                 <a class="py-2 d-none d-md-inline-block" href="?lang=ru" th:text="#{header.change.ru}">Ru</a></span>
             <a class="py-2 d-none d-md-inline-block" href="/" th:text="#{header.main}">Main</a>
             <a class="py-2 d-none d-md-inline-block" href="/blog" th:text="#{auth.masterhead}">Blog</a>
-            <a class="py-2 d-none d-md-inline-block" href="/user" th:text="#{header.authors}">All authors</a>
-            <a class="py-2 d-none d-md-inline-block" href="/post" th:text="#{header.posts}">All posts</a>
-            <a class="py-2 d-none d-md-inline-block" href="/user/mine" th:text="#{header.profile}">My profile</a>
+            <a class="py-2 d-none d-md-inline-block" href="/users" th:text="#{header.authors}">All authors</a>
+            <a class="py-2 d-none d-md-inline-block" href="/posts" th:text="#{header.posts}">All posts</a>
+            <a class="py-2 d-none d-md-inline-block" href="/users/mine" th:text="#{header.profile}">My profile</a>
             <form action="/logout" method="POST">
                 <button class="btn btn-lg" th:text="#{header.logout.button}" type="submit">Logout</button>
             </form>

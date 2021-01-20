@@ -51,6 +51,5 @@ public class UsersController {
         }
 
         return "views/get-user";
-
     }
 }

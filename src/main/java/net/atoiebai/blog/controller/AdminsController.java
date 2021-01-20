@@ -30,8 +30,8 @@ public class AdminsController {
     private final CategoryService categoryService;
 
 
-/*      A page which available only for users with special authorities
-        @return admin-panel-page with all usable functions */
+    /*  A page which available only for users with special authorities
+            @return admin-panel-page with all usable functions */
     @GetMapping()
     public String getSecretPage(Model model) {
         //TODO: secret page with functions which available only for admins
@@ -49,7 +49,8 @@ public class AdminsController {
 
     @PostMapping("/create-new-category")
     public String saveCategory(@ModelAttribute("newCategory") Category category) {
+        category.setSlug(category.getTitle());
         categoryService.saveCategory(category);
-        return "redirect:/blog/category";
+        return "redirect:/blog/categories";
     }
 }

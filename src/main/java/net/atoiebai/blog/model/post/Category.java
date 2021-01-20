@@ -20,9 +20,16 @@ public class Category {
     @Column(nullable = false)
     String themes;
 
+    @Column(nullable = false)
+    String slug;
+
+
+
     @Override
     public String toString() {
         return title;
     }
+
+
 
 }

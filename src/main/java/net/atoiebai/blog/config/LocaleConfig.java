@@ -21,7 +21,6 @@ public class LocaleConfig implements WebMvcConfigurer {
         Locale locale = new Locale("ru");
         localeResolver.setDefaultLocale(Locale.ENGLISH);
         return localeResolver;
-
     }
 
     @Bean
@@ -36,4 +35,5 @@ public class LocaleConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
     }
+
 }

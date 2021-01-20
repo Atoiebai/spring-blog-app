@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{category}">Categories</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<header th:insert="fragments/header :: header"></header>
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+<table>
+    <tr>
+        <td class="font-weight-bold" th:text="#{get.posts.author}">Category</td>
+        <td class="font-weight-bold" th:text="#{create.post.title.placeholder}">&nbsp; Themes</td>
+    </tr>
+
+    <tr th:each="category : ${categories}">
+        <td>
+            <a class="font-weight-bold" th:href="'/blog/'+${category.getSlug()}"
+               th:text="${category.getTitle()}"></a>
+        </td>
+
+        <td>
+            <a class="font-weight-bold" th:href="'/blog/'+${category.getSlug()}"
+               th:text="'&nbsp;' + ${category.getThemes()}"></a>
+        </td>
+    </tr>
+</table>
+</div>
+<footer th:insert="fragments/footer :: footer"></footer>
+</body>
+</html>

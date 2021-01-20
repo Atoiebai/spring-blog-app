@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
 @RequestMapping(URLS.blogPage)
 @AllArgsConstructor
@@ -28,7 +27,8 @@ public class BlogsController {
 
     @GetMapping(URLS.categoryPage)
     public String showCategories(Model model) {
-        return "views/category";
+        model.addAttribute("categories" , categoryService.getAllCategories());
+        return "views/categories";
     }
 
     @ModelAttribute
