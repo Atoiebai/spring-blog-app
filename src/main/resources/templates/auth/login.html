@@ -29,7 +29,8 @@
                     <h4 class="form-signin-heading" th:text="#{auth.login}">Login </h4>
                     <p>
                         <label for="username"></label>
-                        <input class="form-control" id="username" name="username" th:placeholder="#{auth.username.placeholder}"
+                        <input class="form-control" id="username" name="username"
+                               th:placeholder="#{auth.username.placeholder} + ' ' + #{auth.or} + ' ' + #{auth.email.address}"
                                type="text">
                     </p>
 

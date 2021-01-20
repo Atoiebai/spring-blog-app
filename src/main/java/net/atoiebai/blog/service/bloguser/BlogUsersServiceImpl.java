@@ -32,8 +32,8 @@ public class BlogUsersServiceImpl implements BlogUsersService {
     @Override
     public BlogUser getUser(String identifier) {
         return blogUsersRepository.findByUsername(identifier)
-                .orElseGet(() -> blogUsersRepository.findByEmail(identifier)
-                        .orElseThrow());
+                .orElseGet(() -> blogUsersRepository
+                        .findByEmail(identifier).orElseThrow());
     }
 
     @Override

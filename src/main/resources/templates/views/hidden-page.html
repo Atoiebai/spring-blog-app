@@ -18,7 +18,7 @@
 
             <tr th:each="user : ${users}">
                 <td>
-                    <a th:href="'/users/'+${user.getId()}" th:text="${user.getEmail()}"></a>
+                    <a th:href="'/users/'+${user.getSlug()}" th:text="${user.getEmail()}"></a>
                 </td>
             </tr>
         </table>
