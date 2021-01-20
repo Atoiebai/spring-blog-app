@@ -16,12 +16,13 @@
 
     <tr th:each="category : ${categories}">
         <td>
-            <a class="font-weight-bold" th:href="'/blog/'+${category.getSlug()}"
+
+            <a class="font-weight-bold" th:href="'../' + ${category.getSlug()}"
                th:text="${category.getTitle()}"></a>
         </td>
 
         <td>
-            <a class="font-weight-bold" th:href="'/blog/'+${category.getSlug()}"
+            <a class="font-weight-bold" th:href="'../' + ${category.getSlug()}"
                th:text="'&nbsp;' + ${category.getThemes()}"></a>
         </td>
     </tr>

@@ -13,6 +13,8 @@ public interface BlogUsersService {
 
     BlogUser getUser(long id);
 
+    BlogUser getUser(String identifier);
+
     void deleteUser(long id);
 
     void enableBlogUser(String email);

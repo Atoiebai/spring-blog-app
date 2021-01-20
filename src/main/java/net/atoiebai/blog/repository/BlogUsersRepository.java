@@ -15,10 +15,13 @@ public interface BlogUsersRepository extends JpaRepository<BlogUser, Long> {
 
     Optional<BlogUser> findByEmail(String email);
 
+    Optional<BlogUser> findByUsername(String username);
+
     @Transactional
     @Modifying
     @Query("UPDATE BlogUser a " +
             "SET a.status = 'ACTIVE' , a.role= 'USER' WHERE a.email = ?1")
     void enableBlogUser(String email);
+
 
 }

@@ -35,5 +35,4 @@ public class BlogsController {
     public void listOfCategories(Model model) {
         model.addAttribute("categories", categoryService.getAllCategories());
     }
-
 }

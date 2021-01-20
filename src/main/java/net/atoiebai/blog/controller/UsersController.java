@@ -39,15 +39,15 @@ public class UsersController {
         return "views/personal-page";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{username}")
     public String getUser(Model model,
-                          @PathVariable(value = "id") long id) {
+                          @PathVariable(value = "username") String username) {
 
         try {
-            BlogUser blogUser = usersService.getUser(id);
+            BlogUser blogUser = usersService.getUser(username);
             model.addAttribute("user", blogUser);
         } catch (EntityNotFoundException e) {
-            //TODO: logic for exception
+//            TODO: logic for exception
         }
 
         return "views/get-user";

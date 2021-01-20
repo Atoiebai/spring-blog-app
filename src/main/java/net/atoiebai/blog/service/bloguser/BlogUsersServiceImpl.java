@@ -3,10 +3,7 @@ package net.atoiebai.blog.service.bloguser;
 
 import lombok.AllArgsConstructor;
 import net.atoiebai.blog.model.user.BlogUser;
-import net.atoiebai.blog.model.user.Role;
-import net.atoiebai.blog.model.user.Status;
 import net.atoiebai.blog.repository.BlogUsersRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +30,13 @@ public class BlogUsersServiceImpl implements BlogUsersService {
     }
 
     @Override
+    public BlogUser getUser(String identifier) {
+        return blogUsersRepository.findByUsername(identifier)
+                .orElseGet(() -> blogUsersRepository
+                        .findByEmail(identifier).orElseThrow());
+    }
+
+    @Override
     public void deleteUser(long id) {
         this.blogUsersRepository.deleteById(id);
     }
@@ -44,7 +48,8 @@ public class BlogUsersServiceImpl implements BlogUsersService {
 
     @Override
     public boolean userExist(String email) {
-        return blogUsersRepository.findByEmail(email).isPresent();
+        return blogUsersRepository.findByEmail(email).isPresent()
+                || blogUsersRepository.findByUsername(email).isPresent();
     }
 
 

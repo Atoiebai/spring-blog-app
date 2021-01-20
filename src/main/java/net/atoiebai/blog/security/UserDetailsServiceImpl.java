@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 import java.util.UUID;
 
 @Service
@@ -35,8 +36,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String identifier) throws UsernameNotFoundException {
         return blogUsersRepository.findByEmail(identifier)
-                .orElseThrow(() -> new UsernameNotFoundException(
-                        String.format(USER_NOT_FOUND_MSG, identifier)));
+                .orElseGet(() -> blogUsersRepository.findByUsername(identifier).orElseThrow(
+                        ()-> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, identifier))));
 
     }
 
@@ -45,7 +46,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRole(Role.GUEST);
         user.setStatus(Status.UNCONFIRMED);
-
+        user.setSlug(user.getUsername().replaceAll("\\s" , ""));
         blogUsersRepository.save(user);
 
         String token = UUID.randomUUID().toString();

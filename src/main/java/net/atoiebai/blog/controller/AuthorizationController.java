@@ -47,8 +47,9 @@ public class AuthorizationController {
                            @Valid BlogUser user,
                            BindingResult bindingResult) {
 
-        if (blogUsersService.userExist(user.getEmail())) {
-            bindingResult.addError(new FieldError("user", "email", "email already in use | почта уже используется"));
+        if (blogUsersService.userExist(user.getEmail()) ||
+                blogUsersService.userExist(user.getUsername())) {
+            bindingResult.addError(new FieldError("user", "email", "email or username already in use | почта или юзернейм уже используется"));
         }
 
         if (!user.checkPassword()) {
