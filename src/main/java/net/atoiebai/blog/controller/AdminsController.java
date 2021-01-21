@@ -6,6 +6,7 @@ import net.atoiebai.blog.service.bloguser.BlogUsersService;
 import net.atoiebai.blog.service.category.CategoryService;
 import net.atoiebai.blog.service.post.PostService;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping(URLS.adminPage)
 @AllArgsConstructor
-@Secured("ADMIN")
+//@Secured("ROLE_ADMIN")
 public class AdminsController {
 
     private final BlogUsersService usersService;
@@ -35,6 +36,7 @@ public class AdminsController {
     /*  A page which available only for users with special authorities
             @return admin-panel-page with all usable functions */
     @GetMapping()
+    @PreAuthorize("hasAuthority('can:manage:users')")
     public String getSecretPage(Model model) {
         //TODO: secret page with functions which available only for admins
         model.addAttribute("users", usersService.getAllUsers());
@@ -44,12 +46,14 @@ public class AdminsController {
 
 
     @GetMapping("/create-new-category")
+    @PreAuthorize("hasAuthority('can:manage:users')")
     public String createCategory(Model model) {
         model.addAttribute("newCategory", new Category());
         return "views/category-save-form";
     }
 
     @PostMapping("/create-new-category")
+    @PreAuthorize("hasAuthority('can:manage:users')")
     public String saveCategory(@ModelAttribute("newCategory") Category category) {
         category.setSlug(category.getTitle().replaceAll("\\s", "-").toLowerCase(Locale.ROOT));
         categoryService.saveCategory(category);

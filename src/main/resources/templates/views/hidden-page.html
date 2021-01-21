@@ -30,7 +30,7 @@
 
             <tr th:each="post : ${posts}">
                 <td>
-                    <a th:href="'/posts/'+${post.getPostId()}" th:text="${post.getTitle()}"></a>
+                    <a th:href="${post.getCategory().getSlug()}+'/'+${post.getSlug()}" th:text="${post.getTitle()}"></a>
                 </td>
             </tr>
         </table>

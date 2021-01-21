@@ -46,11 +46,4 @@ public class PostsController {
         return "views/get-posts";
     }
 
-    @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('can:read')")
-    public String getPost(Model model, @PathVariable(value = "id") long id) {
-        model.addAttribute("post", postService.getPostById(id));
-        return "views/get-post";
-    }
-
 }

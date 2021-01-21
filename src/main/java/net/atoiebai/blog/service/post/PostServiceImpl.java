@@ -42,4 +42,9 @@ public class PostServiceImpl implements PostService {
         return postRepository.findAllByCategory(category);
     }
 
+    @Override
+    public Post getPostBySlug(String slug) {
+        return postRepository.findBySlug(slug).orElseThrow();
+    }
+
 }
