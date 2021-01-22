@@ -19,7 +19,7 @@
         <br>
         <p class="font-weight-bold" th:text="#{get.user.blog-themes}"></p>
         <br>
-        <p class="font-weight-bold" th:text="#{get.user.total-posts}"></p>
+        <p class="font-weight-bold" th:text="#{get.user.total-posts} + ': ' + ${countOfPosts}"></p>
     </div>
 </div>
 <footer th:insert="fragments/footer :: footer"></footer>

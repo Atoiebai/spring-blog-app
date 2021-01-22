@@ -52,5 +52,8 @@ public class BlogUsersServiceImpl implements BlogUsersService {
                 || blogUsersRepository.findByUsername(email).isPresent();
     }
 
-
+    @Override
+    public Integer countPosts(Long id) {
+        return blogUsersRepository.countPostsOfUser(id);
+    }
 }
