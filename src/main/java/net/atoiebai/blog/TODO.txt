@@ -16,3 +16,4 @@
 16. Admin-panel only for admins
 17. Create permissions for each page
 18. Add slugs for each entity
+19. Mapping for getPostsBySlug is not correct

@@ -21,4 +21,6 @@ public interface BlogUsersService {
 
     boolean userExist(String email);
 
+    Integer countPosts(Long id);
+
 }

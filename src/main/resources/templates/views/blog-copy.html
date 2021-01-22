@@ -67,7 +67,7 @@
                                th:text="${post.getBlogUser().getFirstName()}"></a>
                         </td>
                         <td>
-                            <a class="font-weight-bold" th:href="'/posts/'+${post.getPostId()}"
+                            <a class="font-weight-bold" th:href="${post.getCategory().getSlug()}+ '/'+${post.getSlug()}"
                                th:text="${post.getTitle()}"></a>
                         </td>
                     </tr>

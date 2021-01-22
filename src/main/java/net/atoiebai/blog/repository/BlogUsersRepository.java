@@ -23,5 +23,7 @@ public interface BlogUsersRepository extends JpaRepository<BlogUser, Long> {
             "SET a.status = 'ACTIVE' , a.role= 'USER' WHERE a.email = ?1")
     void enableBlogUser(String email);
 
+    @Query("SELECT COUNT(x) FROM Post x WHERE x.blogUser.id = ?1")
+    Integer countPostsOfUser(Long id);
 
 }

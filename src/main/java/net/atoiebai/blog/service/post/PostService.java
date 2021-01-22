@@ -15,4 +15,7 @@ public interface PostService {
     void savePost(Post post);
 
     List<Post> getAllByCategory(Category category);
+
+    Post getPostBySlug(String slug);
+
 }

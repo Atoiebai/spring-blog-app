@@ -8,7 +8,6 @@ import net.atoiebai.blog.model.user.BlogUser;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Date;
-import java.util.Locale;
 
 @Entity
 @Table(name = "posts")
@@ -20,7 +19,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Long postId;
+    Long id;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "user_id", nullable = false)

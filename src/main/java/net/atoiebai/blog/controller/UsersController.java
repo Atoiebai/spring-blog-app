@@ -46,6 +46,7 @@ public class UsersController {
         try {
             BlogUser blogUser = usersService.getUser(username);
             model.addAttribute("user", blogUser);
+            model.addAttribute("countOfPosts" , usersService.countPosts(blogUser.getId()));
         } catch (EntityNotFoundException e) {
 //            TODO: logic for exception
         }
