@@ -18,31 +18,31 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(updatable = false)
     Long id;
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     BlogUser blogUser;
 
-    @Column(name = "title", nullable = false)
+    @Column(name = "title", nullable = false, columnDefinition = "TEXT")
     @NotEmpty
     String title;
 
-    @Column(name = "theme", nullable = false)
+    @Column(name = "theme", nullable = false, columnDefinition = "TEXT")
     String theme;
 
-    @Column(name = "body", nullable = false)
+    @Column(name = "body", nullable = false, columnDefinition = "TEXT")
     String body;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id", nullable = false, columnDefinition = "TEXT")
     Category category;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String slug;
 
-    @Column(nullable = false)
+    @Column(nullable = false, updatable = false, columnDefinition = "DATE")
     Date createdAt = new Date();
 
     @Column(nullable = false)

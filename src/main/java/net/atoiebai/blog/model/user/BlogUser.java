@@ -25,33 +25,34 @@ public class BlogUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     Long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
     @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)")
     String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
     @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)")
     String lastName;
 
     @Email(message = "Invalid email address")
     @NotEmpty(message = "required field | обязательное поле")
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true, columnDefinition = "TEXT")
     String email;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true, columnDefinition = "TEXT")
     @NotEmpty(message = "required field | обязательное поле")
     String username;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name = "sex", nullable = false)
+    @Column(name = "sex", nullable = false, updatable = false)
     Sex sex;
 
-    @Column(name = "bio")
+    @Column(name = "bio", columnDefinition = "TEXT")
     String bio;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String slug;
 
     @Column(name = "password", nullable = false)
@@ -70,7 +71,7 @@ public class BlogUser implements UserDetails {
     Status status;
 
     @CreationTimestamp
-    @Column(name = "created", nullable = false)
+    @Column(name = "created", nullable = false, updatable = false, columnDefinition = "DATE")
     private LocalDateTime created;
 
     public BlogUser(@Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)") String firstName,
