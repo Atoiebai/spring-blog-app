@@ -22,26 +22,16 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final static Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     private final static String USER_NOT_FOUND_MSG = "user with email %s not found";
     private final BlogUsersRepository blogUsersRepository;
     private final ConfirmationTokenService confirmationTokenService;
     private final PasswordEncoder bCryptPasswordEncoder;
 
-
-    /**
-     * @param identifier needs to find user in our Repository
-     * @return converted into SecurityUser blogUser
-     * @throw UsernameNotFoundException
-     */
-
     @Override
     public UserDetails loadUserByUsername(String identifier) throws UsernameNotFoundException {
-        logger.info("Authorized user with {} identifier" , identifier);
         return blogUsersRepository.findByEmail(identifier)
                 .orElseGet(() -> blogUsersRepository.findByUsername(identifier).orElseThrow(
-                        () -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, identifier))));
-
+                () -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, identifier))));
     }
 
     public String signUpUser(BlogUser user) {
