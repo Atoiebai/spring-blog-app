@@ -26,7 +26,7 @@ public class BlogUsersServiceImpl implements BlogUsersService {
 
     @Override
     public BlogUser getUser(long id) {
-        return this.blogUsersRepository.getOne(id);
+        return blogUsersRepository.findById(id).get();
     }
 
     @Override

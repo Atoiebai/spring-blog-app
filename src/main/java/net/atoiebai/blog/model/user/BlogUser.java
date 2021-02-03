@@ -1,5 +1,7 @@
 package net.atoiebai.blog.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +23,7 @@ import java.util.Collection;
 @Setter
 @ToString
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BlogUser implements UserDetails {
 
     @Id
@@ -55,6 +58,7 @@ public class BlogUser implements UserDetails {
     @Column(nullable = false, unique = true)
     String slug;
 
+    @JsonIgnore
     @Column(name = "password", nullable = false)
     @NotEmpty(message = "required field | обязательное поле")
     String password;
@@ -62,53 +66,63 @@ public class BlogUser implements UserDetails {
     @Transient
     String confirmationPassword;
 
+    @JsonIgnore
     @Enumerated(value = EnumType.STRING)
     @Column(name = "role", nullable = false)
     Role role;
 
+    @JsonIgnore
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status", nullable = false)
     Status status;
 
+    @JsonIgnore
     @CreationTimestamp
     @Column(name = "created", nullable = false, updatable = false, columnDefinition = "DATE")
-    private LocalDateTime created;
+    LocalDateTime created;
 
     public BlogUser(@Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)") String firstName,
                     @Size(min = 2, max = 30, message = "required field | обязательное поле (2-30 letters)") String lastName,
                     @NotEmpty(message = "required field | обязательное поле") String email,
                     @NotEmpty(message = "required field | обязательное поле") String password) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
 
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return role.getAuthorities();
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return status.equals(Status.ACTIVE) || status.equals(Status.UNCONFIRMED);
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return !status.equals(Status.BANNED);
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return status.equals(Status.UNCONFIRMED) || status.equals(Status.ACTIVE);
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return !status.equals(Status.BANNED);
     }
 
+    @JsonIgnore
     public boolean checkPassword() {
         return confirmationPassword.equals(password);
     }

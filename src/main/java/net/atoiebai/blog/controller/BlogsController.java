@@ -27,7 +27,7 @@ public class BlogsController {
 
     @GetMapping(URLS.categoryPage)
     public String showCategories(Model model) {
-        model.addAttribute("categories" , categoryService.getAllCategories());
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "views/categories";
     }
 
