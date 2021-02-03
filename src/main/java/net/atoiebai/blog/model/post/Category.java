@@ -12,15 +12,16 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false)
     long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     String themes;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     String slug;
 
     @Override

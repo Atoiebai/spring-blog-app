@@ -16,5 +16,6 @@ public class URLS {
     public static final String registerUser = "/register";
     public static final String personalPage = "/mine";
     public static final String categoryPage = "/categories";
+    public static final String restPage = "/api/v1/blog/users";
 
 }
