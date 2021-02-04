@@ -11,12 +11,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LogAspect {
-
+    // TODO: 2/4/2021 log to diff files by priority lvl
     private final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     @Pointcut("within(net.atoiebai.blog..*)")
     public void callAtMyServiceAnnotation() {
-
     }
 
     @Before("callAtMyServiceAnnotation()")

@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+// TODO: 2/4/2021 comments 
 @Entity
 @Getter
 @Setter

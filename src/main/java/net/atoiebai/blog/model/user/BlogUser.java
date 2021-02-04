@@ -17,6 +17,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
+// TODO: 2/4/2021 age/comments 
 @Entity
 @Table(name = "users")
 @Getter
@@ -25,7 +26,7 @@ import java.util.Collection;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BlogUser implements UserDetails {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)

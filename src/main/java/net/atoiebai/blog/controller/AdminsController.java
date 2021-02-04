@@ -24,9 +24,10 @@ import java.util.Locale;
 @Controller
 @RequestMapping(URLS.adminPage)
 @AllArgsConstructor
+// TODO: 2/5/2021 Secure by role_admin 
 //@Secured("ROLE_ADMIN")
 public class AdminsController {
-
+    // TODO: 2/5/2021 Methods to manage users posts and blog 
     private final BlogUsersService usersService;
     private final PostService postService;
     private final CategoryService categoryService;
@@ -43,7 +44,7 @@ public class AdminsController {
         return "views/hidden-page";
     }
 
-
+    
     @GetMapping("/create-new-category")
     @PreAuthorize("hasAuthority('can:manage:users')")
     public String createCategory(Model model) {

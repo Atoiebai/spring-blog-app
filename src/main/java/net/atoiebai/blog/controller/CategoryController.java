@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 @AllArgsConstructor
 public class CategoryController {
-
+    // TODO: 2/5/2021 Get all posts by category 
     private final PostService postService;
 
     @GetMapping("/{category}/{slug}")

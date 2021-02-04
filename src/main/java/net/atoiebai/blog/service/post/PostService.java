@@ -10,6 +10,7 @@ public interface PostService {
 
     Post getPostById(long id);
 
+    // TODO: 2/4/2021 delete posts 
     void deletePostById(long id);
 
     void savePost(Post post);
