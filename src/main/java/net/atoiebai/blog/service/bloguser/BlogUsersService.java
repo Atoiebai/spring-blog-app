@@ -15,6 +15,7 @@ public interface BlogUsersService {
 
     BlogUser getUser(String identifier);
 
+    // TODO: 2/4/2021 ban user instead deleting 
     void deleteUser(long id);
 
     void enableBlogUser(String email);

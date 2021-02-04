@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.time.ZonedDateTime;
 import java.util.NoSuchElementException;
 
-@ControllerAdvice
+@ControllerAdvice("net.atoiebai.blog.api.")
 public class ApiExceptionHandler {
 
     @ExceptionHandler({NoSuchElementException.class , IllegalArgumentException.class})
@@ -23,17 +23,5 @@ public class ApiExceptionHandler {
         );
         return new ResponseEntity<>(exception, status);
     }
-
-//    @ExceptionHandler(Throwable.class)
-//    public ResponseEntity<Object> handleNotFoundException(Throwable e) {
-//        HttpStatus status = HttpStatus.NOT_FOUND;
-//        ApiException exception = new ApiException(
-//                e.getMessage(),
-//                status,
-//                ZonedDateTime.now()
-//        );
-//        return new ResponseEntity<>(exception, status);
-//    }
-
 
 }

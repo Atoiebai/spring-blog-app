@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
 @RequestMapping("api/v1/blog/")
@@ -22,28 +23,25 @@ import java.util.List;
 public class UserController {
 
     private final BlogUsersService usersService;
-    private final BlogUsersRepository blogUsersRepository;
     private final RegistrationService registrationService;
     private final PostService postService;
+    private final BlogUsersRepository usersRepository;
 
 
-    @RequestMapping(value = "/users" ,method = RequestMethod.GET )
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public ResponseEntity<List<BlogUser>> getAllUsers() {
         List<BlogUser> users = usersService.getAllUsers();
-        return new ResponseEntity<>(users , HttpStatus.OK);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/users/{id}" , method = RequestMethod.GET )
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
     public ResponseEntity<BlogUser> getUser(@PathVariable Long id) {
-//        BlogUser user = blogUsersRepository.findById(id).orElse(null);
-//       if(user == null) throw new NoSuchUserException("No user with such id");
-//       return new ResponseEntity<>(user , HttpStatus.OK);
-        BlogUser user = usersService.getUser(id);
-        return new ResponseEntity<>(user , HttpStatus.OK);
-
+        BlogUser user = usersRepository.findById(id).orElse(null);
+        if(user == null) throw new NoSuchElementException("Ha ha ha :");
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "users/create" , method = RequestMethod.POST)
+    @RequestMapping(value = "users/create", method = RequestMethod.POST)
     public ResponseEntity<String> createUser(
             @RequestBody @Valid BlogUser user,
             BindingResult bindingResult) {
@@ -53,18 +51,19 @@ public class UserController {
             bindingResult.addError(new FieldError("user", "email", "email or username already in use | почта или юзернейм уже используется"));
         }
 
-        if(bindingResult.hasErrors()) {
-           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         registrationService.register(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/posts" ,method = RequestMethod.GET )
+    // TODO: 2/4/2021 Controller to manage posts in api 
+    @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postService.getAllPosts();
-        return new ResponseEntity<>(posts , HttpStatus.OK);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
 }

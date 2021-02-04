@@ -1,19 +1,19 @@
-1. Need to fix select field after validation
-2. Need to change blog-page to work with diff categories
-3. Posts should be added from personal page
-4. Posts should be available by checking category
-5. Add register date to users
-6. Add date to posts
-7. Add bio to users
-8. Logger
-9. Subscribing for users
-10. Add slugs
-11. Add draft and archive
-12. Add update date
-13. Return posts by diff parameters
-14. Category page
-15. Make category an entity
-16. Admin-panel only for admins
-17. Create permissions for each page
-18. Add slugs for each entity
-19. Mapping for getPostsBySlug is not correct
+ Need to fix select field after validation
+ Posts should be available by checking category
+ Add register date to users
+ Add date to posts
+ Add bio to users
+ Logger
+ Subscribing for users
+ Add slugs
+ Add draft and archive
+ Add update date
+ Return posts by diff parameters
+ Category page
+ Make category an entity
+ Admin-panel only for admins
+ Create permissions for each page
+ Add slugs for each entity
+ Mapping for getPostsBySlug is not correct
+ i18n for new words
+ constants for new url's
