@@ -1,4 +1,4 @@
-package net.atoiebai.blog.api.exception;
+package net.atoiebai.blog.exception.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

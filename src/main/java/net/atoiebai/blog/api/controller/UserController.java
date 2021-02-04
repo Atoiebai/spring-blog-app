@@ -1,7 +1,6 @@
 package net.atoiebai.blog.api.controller;
 
 import lombok.AllArgsConstructor;
-import net.atoiebai.blog.api.exception.NoSuchUserException;
 import net.atoiebai.blog.model.post.Post;
 import net.atoiebai.blog.model.user.BlogUser;
 import net.atoiebai.blog.repository.BlogUsersRepository;
@@ -36,9 +35,12 @@ public class UserController {
 
     @RequestMapping(value = "/users/{id}" , method = RequestMethod.GET )
     public ResponseEntity<BlogUser> getUser(@PathVariable Long id) {
-        BlogUser user = blogUsersRepository.findById(id).orElse(null);
-       if(user == null) throw new NoSuchUserException("No user with such id");
-       return new ResponseEntity<>(user , HttpStatus.OK);
+//        BlogUser user = blogUsersRepository.findById(id).orElse(null);
+//       if(user == null) throw new NoSuchUserException("No user with such id");
+//       return new ResponseEntity<>(user , HttpStatus.OK);
+        BlogUser user = usersService.getUser(id);
+        return new ResponseEntity<>(user , HttpStatus.OK);
+
     }
 
     @RequestMapping(value = "users/create" , method = RequestMethod.POST)

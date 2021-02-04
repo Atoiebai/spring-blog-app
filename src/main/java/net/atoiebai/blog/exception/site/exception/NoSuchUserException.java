@@ -1,4 +1,4 @@
-package net.atoiebai.blog.api.exception;
+package net.atoiebai.blog.exception.site.exception;
 
 
 public class NoSuchUserException extends RuntimeException  {
