@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
-// TODO: 2/4/2021 age/comments 
+// TODO: 2/4/2021 age/comments/avatar
 @Entity
 @Table(name = "users")
 @Getter

@@ -12,8 +12,11 @@
  Category page
  Make category an entity
  Admin-panel only for admins
- Create permissions for each page
+ Create permission bundle for each page
  Add slugs for each entity
  Mapping for getPostsBySlug is not correct
  i18n for new words
- constants for new url's
+ constants for new url`s
+ sorts for posts and users
+
+ CHANGE IT ALL TO REST

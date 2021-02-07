@@ -20,8 +20,8 @@ public class ExceptionAspect {
 
     }
 
-     @AfterThrowing(value = "exceptionPoint()" , throwing = "ex")
-    public void substitutionToCustomException(JoinPoint jp , Exception ex) {
+    @AfterThrowing(value = "exceptionPoint()", throwing = "ex")
+    public void substitutionToCustomException(JoinPoint jp, Exception ex) {
         logger.warn("Exception substituted to " + jp.getThis() + " or " + ex);
         throw new NoSuchUserException("No user with such id");
     }
